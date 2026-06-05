@@ -1,2 +1,23 @@
 # Dependency directories
 node_modules/
+
+# Build output
+dist/
+frontend/dist/
+frontend/dist-ssr/
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Tooling
+.vite/
+coverage/
+playwright-report/
+test-results/
+frontend/.lighthouseci/
+
+# OS and editors
+.DS_Store
+Thumbs.db
