@@ -6,16 +6,19 @@ const servicesList = [
     title: "Digital Advertising",
     description: "Strategi iklan berbasis data untuk meningkatkan konversi dan pertumbuhan bisnis.",
     icon: Megaphone,
+    href: "/service/digital-advertising",
   },
   {
     title: "Content & Creative",
     description: "Konten visual dan strategi kreatif yang memperkuat identitas brand.",
     icon: PenTool,
+    href: "/service/content-creative",
   },
   {
     title: "Web Design & Development",
     description: "Pengembangan website modern, cepat, dan berorientasi pada konversi.",
     icon: Code2,
+    href: "/service/web-design-development",
   },
 ];
 
@@ -34,7 +37,7 @@ export default function ServicesDropdown() {
           return (
             <a
               key={index}
-              href={`#service-${index}`}
+              href={service.href}
               className="group relative flex items-start gap-4 rounded-xl p-3 hover:bg-white/5 transition-colors duration-200"
             >
               <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-[#00A8FF]/10 flex items-center justify-center border border-[#00A8FF]/20 group-hover:bg-[#00A8FF]/20 group-hover:border-[#00A8FF]/40 transition-colors duration-200 shadow-[0_0_15px_rgba(0,168,255,0)] group-hover:shadow-[0_0_15px_rgba(0,168,255,0.3)]">

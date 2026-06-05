@@ -3,9 +3,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, Megaphone, PenTool, Code2 } from "lucide-react";
 
 const servicesList = [
-  { title: "Digital Advertising", icon: Megaphone, href: "#service-0" },
-  { title: "Content & Creative", icon: PenTool, href: "#service-1" },
-  { title: "Web Design & Development", icon: Code2, href: "#service-2" },
+  { title: "Digital Advertising", icon: Megaphone, href: "/service/digital-advertising" },
+  { title: "Content & Creative", icon: PenTool, href: "/service/content-creative" },
+  { title: "Web Design & Development", icon: Code2, href: "/service/web-design-development" },
 ];
 
 export default function MobileAccordion({ closeMenu }) {
