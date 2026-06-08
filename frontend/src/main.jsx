@@ -4,12 +4,14 @@ import App from "./App";
 import { reportWebVitals } from "./services/webVitals";
 import "./styles/globals.css";
 import SmoothScroll from "./components/SmoothScroll";
+import FloatingWhatsApp from "./components/common/FloatingWhatsApp";
 
 const rootElement = document.getElementById("root");
 const app = (
   <StrictMode>
     <SmoothScroll>
       <App />
+      <FloatingWhatsApp />
     </SmoothScroll>
   </StrictMode>
 );
