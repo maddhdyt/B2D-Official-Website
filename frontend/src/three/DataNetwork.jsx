@@ -6,9 +6,12 @@ import { cities, createRouteCurve, latLngToVector3, routes } from "./globeMath";
 function createNetworkGeometry() {
   const curves = routes.map(createRouteCurve);
   const lineSegments = [];
+  const precomputedPoints = [];
 
   curves.forEach((curve) => {
     const points = curve.getPoints(40);
+    // Precompute 100 segments (101 points) for fast lerping in useFrame
+    precomputedPoints.push(curve.getPoints(100));
 
     for (let index = 0; index < points.length - 1; index += 1) {
       lineSegments.push(...points[index].toArray(), ...points[index + 1].toArray());
@@ -17,6 +20,7 @@ function createNetworkGeometry() {
 
   return {
     curves,
+    precomputedPoints,
     linePositions: new Float32Array(lineSegments),
     cityPositions: new Float32Array(
       cities.flatMap(({ lat, lon }) =>
@@ -81,9 +85,19 @@ const DataNetwork = memo(function DataNetwork() {
       lineMaterialRef.current.opacity = 0.46 + Math.sin(elapsed * 0.65) * 0.1;
     }
 
-    network.curves.forEach((curve, index) => {
-      const progress = (elapsed * 0.075 + index / network.curves.length) % 1;
-      curve.getPoint(progress).toArray(packetPositions, index * 3);
+    network.precomputedPoints.forEach((pointsArray, index) => {
+      const progress = (elapsed * 0.075 + index / network.precomputedPoints.length) % 1;
+      
+      const pointIndexFloat = progress * 100;
+      const pointIndex = Math.floor(pointIndexFloat);
+      const lerpAmount = pointIndexFloat - pointIndex;
+      
+      const p1 = pointsArray[pointIndex];
+      const p2 = pointsArray[Math.min(pointIndex + 1, 100)];
+      
+      packetPositions[index * 3] = p1.x + (p2.x - p1.x) * lerpAmount;
+      packetPositions[index * 3 + 1] = p1.y + (p2.y - p1.y) * lerpAmount;
+      packetPositions[index * 3 + 2] = p1.z + (p2.z - p1.z) * lerpAmount;
     });
 
     if (packetsAttribute.current) {

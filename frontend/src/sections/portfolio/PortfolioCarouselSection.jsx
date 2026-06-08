@@ -65,12 +65,18 @@ export default function PortfolioCarouselSection() {
     (nextIndex) => {
       const normalizedIndex =
         (nextIndex + portfolioProjects.length) % portfolioProjects.length;
-      const target = railRef.current?.children[normalizedIndex];
+      const rail = railRef.current;
+      const target = rail?.children[normalizedIndex];
+      if (!rail || !target) return;
 
-      target?.scrollIntoView({
+      const railRect = rail.getBoundingClientRect();
+      const targetRect = target.getBoundingClientRect();
+      
+      const scrollLeft = rail.scrollLeft + (targetRect.left - railRect.left) - (railRect.width / 2) + (targetRect.width / 2);
+
+      rail.scrollTo({
+        left: scrollLeft,
         behavior: prefersReducedMotion ? "auto" : "smooth",
-        block: "nearest",
-        inline: "center",
       });
       setActiveIndex(normalizedIndex);
     },

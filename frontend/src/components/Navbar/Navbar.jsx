@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { useScroll, useMotionValueEvent } from "framer-motion";
 import { Menu } from "lucide-react";
 import { remoteAssets } from "../../assets/remoteAssets";
 import DesktopMenu from "./DesktopMenu";
@@ -11,14 +12,14 @@ export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isContactOpen, setIsContactOpen] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const { scrollY } = useScroll();
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    const shouldBeScrolled = latest > 20;
+    if (isScrolled !== shouldBeScrolled) {
+      setIsScrolled(shouldBeScrolled);
+    }
+  });
 
   return (
     <>

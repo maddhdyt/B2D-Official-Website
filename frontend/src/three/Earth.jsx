@@ -18,8 +18,8 @@ const Earth = memo(function Earth() {
 
   useEffect(() => {
     nightTexture.colorSpace = THREE.SRGBColorSpace;
-    nightTexture.anisotropy = 4;
-    cloudTexture.anisotropy = 2;
+    nightTexture.anisotropy = 2;
+    cloudTexture.anisotropy = 1;
     nightTexture.needsUpdate = true;
     cloudTexture.needsUpdate = true;
   }, [cloudTexture, nightTexture]);
@@ -69,12 +69,12 @@ const Earth = memo(function Earth() {
   return (
     <group ref={earthGroup} rotation={[-0.13, -1.12, -0.08]}>
       <mesh frustumCulled>
-        <sphereGeometry args={[EARTH_RADIUS, 96, 48]} />
+        <sphereGeometry args={[EARTH_RADIUS, 64, 32]} />
         <primitive object={materials.earth} attach="material" />
       </mesh>
 
       <mesh ref={clouds} frustumCulled scale={1.008}>
-        <sphereGeometry args={[EARTH_RADIUS, 80, 40]} />
+        <sphereGeometry args={[EARTH_RADIUS, 64, 32]} />
         <primitive object={materials.cloud} attach="material" />
       </mesh>
 

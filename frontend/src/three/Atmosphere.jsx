@@ -50,7 +50,7 @@ const Atmosphere = memo(function Atmosphere() {
 
   return (
     <mesh frustumCulled scale={1.035}>
-      <sphereGeometry args={[EARTH_RADIUS, 64, 32]} />
+      <sphereGeometry args={[EARTH_RADIUS, 48, 24]} />
       <primitive object={material} attach="material" />
     </mesh>
   );

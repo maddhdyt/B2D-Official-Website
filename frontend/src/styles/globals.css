@@ -724,6 +724,7 @@ body {
   color: #fff;
   box-shadow: 0 0 22px rgba(0, 212, 255, 0.15);
   backdrop-filter: blur(12px);
+  transform: translateZ(0);
   transition:
     border-color 250ms ease,
     background 250ms ease,
@@ -897,7 +898,7 @@ body {
   font-size: 0.7rem;
   font-weight: 600;
   opacity: 0;
-  transform: translate3d(0, 10px, 0);
+  transform: translate3d(0, 10px, 0) translateZ(0);
   backdrop-filter: blur(12px);
   transition:
     opacity 450ms ease,

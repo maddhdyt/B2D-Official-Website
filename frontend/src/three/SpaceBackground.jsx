@@ -8,7 +8,7 @@ const SpaceBackground = memo(function SpaceBackground() {
 
   useEffect(() => {
     texture.colorSpace = THREE.SRGBColorSpace;
-    texture.anisotropy = 2;
+    texture.anisotropy = 1;
     texture.needsUpdate = true;
   }, [texture]);
 

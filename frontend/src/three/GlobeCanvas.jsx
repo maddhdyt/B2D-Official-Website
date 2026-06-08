@@ -1,7 +1,8 @@
-import { PerformanceMonitor } from "@react-three/drei";
+import { useInView } from "framer-motion";
+import { AdaptiveDpr } from "@react-three/drei";
 import { Canvas, useThree } from "@react-three/fiber";
 import { Bloom, EffectComposer } from "@react-three/postprocessing";
-import { useState } from "react";
+import { useRef } from "react";
 import GlobeScene from "./GlobeScene";
 
 function AdaptiveBloom() {
@@ -25,13 +26,16 @@ function AdaptiveBloom() {
 }
 
 export default function GlobeCanvas() {
-  const [dpr, setDpr] = useState(1.15);
+  const containerRef = useRef(null);
+  // Keep rendering slightly before it enters screen to avoid pop-in
+  const isInView = useInView(containerRef, { margin: "400px" });
 
   return (
-    <Canvas
-      camera={{ far: 60, fov: 42, near: 0.1, position: [0, 0.25, 8.4] }}
-      dpr={dpr}
-      frameloop="always"
+    <div ref={containerRef} className="w-full h-full">
+      <Canvas
+        camera={{ far: 60, fov: 42, near: 0.1, position: [0, 0.25, 8.4] }}
+        dpr={[1, 1.5]}
+        frameloop={isInView ? "always" : "demand"}
       gl={{
         alpha: false,
         antialias: false,
@@ -41,13 +45,10 @@ export default function GlobeCanvas() {
       }}
       shadows={false}
     >
-      <PerformanceMonitor
-        flipflops={3}
-        onDecline={() => setDpr(1)}
-        onIncline={() => setDpr(1.35)}
-      />
+      <AdaptiveDpr pixelated />
       <GlobeScene />
       <AdaptiveBloom />
     </Canvas>
+    </div>
   );
 }
