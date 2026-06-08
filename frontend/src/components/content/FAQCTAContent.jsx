@@ -65,7 +65,7 @@ const FAQCTAContent = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+          <h2 className="font-unbounded text-3xl md:text-4xl font-bold text-white mb-4">
             Pertanyaan yang Sering Diajukan
           </h2>
           <p className="text-[#A0B4CC]">
@@ -87,7 +87,7 @@ const FAQCTAContent = () => {
                 onClick={() => toggleFAQ(index)}
                 className="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-[#0D1F3C] transition-colors"
               >
-                <span className="text-white font-medium pr-4">{faq.q}</span>
+                <span className="font-unbounded text-white font-medium pr-4">{faq.q}</span>
                 <ChevronDown 
                   className={`w-5 h-5 text-[#8B5CF6] shrink-0 transition-transform duration-300 ${openIndex === index ? 'rotate-180' : ''}`}
                 />
@@ -128,7 +128,7 @@ const FAQCTAContent = () => {
               <div className="absolute inset-0 bg-[#EC4899] blur-xl opacity-20 rounded-full" />
             </div>
             
-            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
+            <h2 className="font-playfair text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
               Sudah Waktunya Brand Anda <br className="hidden md:block" />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00D4FF] via-[#8B5CF6] to-[#EC4899]">
                 Diingat.

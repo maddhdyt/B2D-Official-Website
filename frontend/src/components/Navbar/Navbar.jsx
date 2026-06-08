@@ -4,10 +4,12 @@ import { remoteAssets } from "../../assets/remoteAssets";
 import DesktopMenu from "./DesktopMenu";
 import MobileMenu from "./MobileMenu";
 import NavbarButton from "./NavbarButton";
+import ContactDrawer from "../ContactDrawer";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isContactOpen, setIsContactOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -31,7 +33,7 @@ export default function Navbar() {
           
           {/* Logo */}
           <a
-            href="#top"
+            href="/"
             className="flex items-center cursor-pointer group relative z-10"
             aria-label="B2D homepage"
           >
@@ -54,7 +56,7 @@ export default function Navbar() {
           <DesktopMenu />
 
           {/* Desktop CTA Button */}
-          <NavbarButton />
+          <NavbarButton onOpenContact={() => setIsContactOpen(true)} />
 
           {/* Mobile Menu Toggle */}
           <button
@@ -72,7 +74,10 @@ export default function Navbar() {
       <MobileMenu 
         isOpen={isMobileMenuOpen} 
         closeMenu={() => setIsMobileMenuOpen(false)} 
+        onOpenContact={() => setIsContactOpen(true)}
       />
+
+      <ContactDrawer isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />
     </>
   );
 }

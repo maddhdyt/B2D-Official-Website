@@ -1,7 +1,7 @@
 export default function HeroSection() {
   return (
     <section
-      className="relative flex flex-col items-center justify-center text-center px-4"
+      className="relative flex flex-col items-center justify-center text-center px-4 mt-12 md:mt-24"
       aria-labelledby="hero-title"
     >
       <h1

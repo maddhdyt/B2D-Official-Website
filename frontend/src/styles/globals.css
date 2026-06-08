@@ -28,6 +28,7 @@
   --font-sans: "Inter", sans-serif;
   --font-unbounded: "Unbounded", sans-serif;
   --font-serif: "Playfair Display", serif;
+  --font-playfair: "Playfair Display", serif;
 
   --animate-scroll: scroll 30s linear infinite;
 
@@ -960,7 +961,7 @@ body {
   min-width: 148px;
   align-items: center;
   justify-content: center;
-  border: 1px solid rgba(91, 255, 121, 0.78);
+  border: 1px solid rgba(0, 212, 255, 0.78);
   border-radius: 999px;
   background: #07080a;
   padding: 0.78rem 1.8rem;
@@ -969,7 +970,7 @@ body {
   font-weight: 500;
   text-decoration: none;
   box-shadow:
-    0 0 18px rgba(91, 255, 121, 0.24),
+    0 0 18px rgba(0, 212, 255, 0.24),
     0 0 38px rgba(0, 212, 255, 0.12);
   transition:
     border-color 300ms ease,
@@ -978,10 +979,10 @@ body {
 }
 
 .insights-more-cta:hover {
-  border-color: #6dff9a;
+  border-color: #4ce7ff;
   color: #fff;
   box-shadow:
-    0 0 25px rgba(91, 255, 121, 0.42),
+    0 0 25px rgba(0, 212, 255, 0.42),
     0 0 55px rgba(0, 212, 255, 0.22);
 }
 

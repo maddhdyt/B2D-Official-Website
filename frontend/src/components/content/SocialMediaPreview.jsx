@@ -71,7 +71,7 @@ const SocialMediaPreview = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            <h2 className="font-playfair text-4xl md:text-5xl font-bold text-white mb-6">
               Konten yang Membuat Scroll Berhenti
             </h2>
             <p className="text-[#A0B4CC] text-lg mb-12">
@@ -85,7 +85,7 @@ const SocialMediaPreview = () => {
                 { label: "Follower Growth", value: "+23%", color: "text-[#EC4899]" }
               ].map((metric, i) => (
                 <div key={i} className="bg-[#0A1628] border border-[rgba(255,255,255,0.05)] rounded-2xl p-6">
-                  <div className={`text-3xl font-bold mb-2 ${metric.color}`}>
+                  <div className={`font-playfair text-4xl font-bold mb-2 ${metric.color}`}>
                     {metric.value}
                   </div>
                   <p className="text-sm text-[#A0B4CC]">{metric.label}</p>

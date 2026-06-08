@@ -62,7 +62,7 @@ export default function GlobeSection() {
         aria-hidden="true"
       />
 
-      <div className="relative z-40 mx-auto flex h-full max-w-7xl flex-col items-center px-5 pt-28 text-center md:pt-36">
+      <div className="relative z-40 mx-auto flex h-full max-w-7xl flex-col items-center px-5 pt-12 text-center md:pt-16">
         <p className="font-unbounded text-[0.62rem] font-medium uppercase tracking-[0.32em] text-[#4CC9F0]/80 md:text-xs">
           B2D Global Digital Network
         </p>

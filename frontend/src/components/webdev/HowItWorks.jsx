@@ -42,7 +42,7 @@ export default function HowItWorks() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-5xl font-bold text-white mb-6"
+            className="font-unbounded text-3xl md:text-5xl font-bold text-white mb-6"
           >
             Bagaimana Kami Bekerja
           </motion.h2>
@@ -74,11 +74,11 @@ export default function HowItWorks() {
                 transition={{ duration: 0.5, delay: index * 0.15 }}
                 className="flex flex-row lg:flex-col items-start lg:items-center gap-6 lg:gap-8 w-full lg:w-1/5"
               >
-                <div className="flex-shrink-0 w-20 h-20 rounded-full bg-[#0D1F3C] border-2 border-[#00D4FF]/50 flex items-center justify-center text-3xl font-bold text-[#00D4FF] shadow-[0_0_30px_rgba(0,212,255,0.2)]">
+                <div className="flex-shrink-0 w-20 h-20 rounded-full bg-[#0D1F3C] border-2 border-[#00D4FF]/50 flex items-center justify-center font-playfair text-4xl font-bold text-[#00D4FF] shadow-[0_0_30px_rgba(0,212,255,0.2)]">
                   {step.number}
                 </div>
                 <div className="flex flex-col lg:items-center lg:text-center mt-2 lg:mt-0">
-                  <h3 className="text-xl font-bold text-white mb-2">{step.title}</h3>
+                  <h3 className="font-unbounded text-xl font-semibold text-white mb-2">{step.title}</h3>
                   <p className="text-[#A0B4CC] text-sm mb-2">{step.description}</p>
                   <span className="inline-block px-3 py-1 rounded-full bg-[#00D4FF]/10 text-[#00D4FF] text-xs font-semibold">
                     {step.duration}

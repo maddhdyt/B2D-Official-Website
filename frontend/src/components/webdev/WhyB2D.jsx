@@ -52,7 +52,7 @@ export default function WhyB2D() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-5xl font-bold text-white"
+            className="font-unbounded text-3xl md:text-5xl font-bold text-white"
           >
             Kenapa Pilih B2D?
           </motion.h2>
@@ -74,7 +74,7 @@ export default function WhyB2D() {
                   <Icon className="w-8 h-8 text-[#00D4FF]" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-white mb-2">{feature.title}</h3>
+                  <h3 className="font-unbounded text-xl font-medium text-white mb-2">{feature.title}</h3>
                   <p className="text-[#A0B4CC] leading-relaxed">{feature.description}</p>
                 </div>
               </motion.div>

@@ -1,4 +1,5 @@
 import { domAnimation, LazyMotion, m } from "framer-motion";
+import favicon from "../assets/favicon.png";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -30,7 +31,7 @@ export default function CTASection() {
           >
             {/* Circular badge */}
             <div className="w-32 h-32 md:w-40 md:h-40 rounded-full border border-white/20 bg-[#07080A] flex items-center justify-center relative overflow-hidden shadow-[0_0_40px_rgba(0,168,255,0.4)]">
-              <img src="https://ik.imagekit.io/yqhp1cmbp/group24.png" alt="B2D Logo" className="w-12 md:w-16 h-auto z-10" />
+              <img src={favicon} alt="B2D Logo" className="w-12 md:w-16 h-auto z-10" />
               
               {/* Rotating text */}
               <m.div

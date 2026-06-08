@@ -9,7 +9,7 @@ const navItems = [
   { label: "Blog", href: "#blog" },
 ];
 
-export default function MobileMenu({ isOpen, closeMenu }) {
+export default function MobileMenu({ isOpen, closeMenu, onOpenContact }) {
   // Prevent scrolling when mobile menu is open
   useEffect(() => {
     if (isOpen) {
@@ -74,13 +74,15 @@ export default function MobileMenu({ isOpen, closeMenu }) {
 
             {/* Footer / CTA */}
             <div className="mt-auto p-6 border-t border-white/5 bg-white/[0.02]">
-              <a
-                href="#contact"
-                onClick={closeMenu}
+              <button
+                onClick={() => {
+                  closeMenu();
+                  onOpenContact();
+                }}
                 className="flex items-center justify-center w-full py-4 rounded-xl bg-[#00A8FF] text-white font-medium hover:bg-[#1E90FF] transition-colors shadow-[0_0_20px_rgba(0,168,255,0.3)]"
               >
                 Contact Us
-              </a>
+              </button>
             </div>
           </motion.div>
         </>

@@ -7,6 +7,7 @@ import SocialMediaPreview from '../components/content/SocialMediaPreview';
 import PricingContent from '../components/content/PricingContent';
 import TestimonialsContent from '../components/content/TestimonialsContent';
 import FAQCTAContent from '../components/content/FAQCTAContent';
+import Footer from '../components/Footer';
 
 const ContentCreative = () => {
   useEffect(() => {
@@ -15,16 +16,19 @@ const ContentCreative = () => {
   }, []);
 
   return (
-    <div className="bg-[#050A18] min-h-screen text-[#FFFFFF] overflow-hidden">
-      <HeroContent />
-      <ServiceShowcase />
-      <CreativeProcess />
-      <BrandIdentityShowcase />
-      <SocialMediaPreview />
-      <PricingContent />
-      <TestimonialsContent />
-      <FAQCTAContent />
-    </div>
+    <>
+      <div className="bg-[#050A18] min-h-screen text-[#FFFFFF] overflow-hidden">
+        <HeroContent />
+        <ServiceShowcase />
+        <CreativeProcess />
+        <BrandIdentityShowcase />
+        <SocialMediaPreview />
+        <PricingContent />
+        <TestimonialsContent />
+        <FAQCTAContent />
+      </div>
+      <Footer />
+    </>
   );
 };
 

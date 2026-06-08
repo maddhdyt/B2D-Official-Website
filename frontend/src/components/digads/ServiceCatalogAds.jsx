@@ -65,7 +65,7 @@ const ServiceCatalogAds = () => {
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+          <h2 className="font-unbounded text-4xl md:text-5xl font-bold text-white mb-6">
             Layanan Digital Advertising B2D
           </h2>
           <p className="text-[#A0B4CC] text-lg">
@@ -99,13 +99,13 @@ const ServiceCatalogAds = () => {
                   {service.icon}
                 </div>
                 <div className="text-right">
-                  <span className="inline-block bg-[#00D4FF]/10 text-[#00D4FF] text-sm font-semibold px-3 py-1.5 rounded-lg border border-[rgba(0,212,255,0.2)]">
+                  <span className="font-unbounded inline-block bg-[#00D4FF]/10 text-[#00D4FF] text-sm font-semibold px-3 py-1.5 rounded-lg border border-[rgba(0,212,255,0.2)]">
                     {service.price}
                   </span>
                 </div>
               </div>
 
-              <h3 className="text-2xl font-bold text-white mb-4">{service.title}</h3>
+              <h3 className="font-unbounded text-2xl font-bold text-white mb-4">{service.title}</h3>
               <p className="text-[#A0B4CC] mb-8 flex-grow">{service.desc}</p>
 
               <div className="flex flex-wrap gap-2 mt-auto">

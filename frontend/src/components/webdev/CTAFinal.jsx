@@ -12,7 +12,7 @@ export default function CTAFinal() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight"
+          className="font-playfair text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight"
         >
           Siap Membangun Kehadiran Digital Anda?
         </motion.h2>
@@ -38,7 +38,7 @@ export default function CTAFinal() {
             href="https://wa.me/6281234567890" // Placeholder number
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-[#00D4FF] text-[#050A18] font-bold text-lg hover:bg-[#00D4FF]/90 transition-all hover:shadow-[0_0_30px_rgba(0,212,255,0.4)]"
+            className="font-unbounded flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-[#00D4FF] text-[#050A18] font-bold text-lg hover:bg-[#00D4FF]/90 transition-all hover:shadow-[0_0_30px_rgba(0,212,255,0.4)]"
           >
             <MessageCircle className="w-5 h-5" />
             Chat via WhatsApp
@@ -46,7 +46,7 @@ export default function CTAFinal() {
           
           <a 
             href="mailto:hello@b2d.id"
-            className="flex items-center justify-center gap-2 px-8 py-4 rounded-full border border-[#00D4FF]/40 bg-[#00D4FF]/5 backdrop-blur-md text-white font-bold text-lg hover:bg-[#00D4FF]/20 transition-all"
+            className="font-unbounded flex items-center justify-center gap-2 px-8 py-4 rounded-full border border-[#00D4FF]/40 bg-[#00D4FF]/5 backdrop-blur-md text-white font-bold text-lg hover:bg-[#00D4FF]/20 transition-all"
           >
             <Mail className="w-5 h-5" />
             Kirim Email

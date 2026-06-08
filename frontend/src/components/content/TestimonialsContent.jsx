@@ -44,7 +44,7 @@ const TestimonialsContent = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+          <h2 className="font-playfair text-4xl md:text-5xl font-bold text-white mb-6">
             Brand yang Kami Bantu Tumbuh
           </h2>
           <p className="text-[#A0B4CC] text-lg max-w-2xl mx-auto">
@@ -71,9 +71,9 @@ const TestimonialsContent = () => {
               </div>
 
               <div className="mt-auto mb-8">
-                <h4 className="font-bold text-white">{testi.client}</h4>
-                <p className="text-sm text-[#8B5CF6]">{testi.role}</p>
-                <p className="text-xs text-[#4A6080]">{testi.business}, {testi.location}</p>
+                <h4 className="font-unbounded font-bold text-white">{testi.client}</h4>
+                <p className="font-unbounded text-sm text-[#8B5CF6]">{testi.role}</p>
+                <p className="font-unbounded text-xs text-[#4A6080]">{testi.business}, {testi.location}</p>
               </div>
 
               <div className="bg-[#050A18] rounded-xl p-4 border border-[rgba(255,255,255,0.02)] flex items-center justify-between">

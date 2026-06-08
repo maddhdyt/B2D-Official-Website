@@ -65,7 +65,7 @@ const PricingAds = () => {
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+          <h2 className="font-unbounded text-4xl md:text-5xl font-bold text-white mb-6">
             Pilih Paket yang Sesuai Budget Anda
           </h2>
           <p className="text-[#A0B4CC] text-lg">
@@ -94,10 +94,10 @@ const PricingAds = () => {
               )}
 
               <div className="mb-8">
-                <h3 className="text-sm font-bold text-[#A0B4CC] tracking-widest uppercase mb-4">{tier.name}</h3>
+                <h3 className="font-unbounded text-sm font-bold text-[#A0B4CC] tracking-widest uppercase mb-4">{tier.name}</h3>
                 <div className="flex items-baseline gap-1">
-                  <span className="text-3xl md:text-4xl font-bold text-white">{tier.price}</span>
-                  <span className="text-[#4A6080]">{tier.period}</span>
+                  <span className="font-playfair text-3xl md:text-4xl font-bold text-white">{tier.price}</span>
+                  <span className="font-unbounded text-[#4A6080]">{tier.period}</span>
                 </div>
               </div>
 

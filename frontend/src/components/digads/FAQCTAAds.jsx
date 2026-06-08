@@ -43,7 +43,7 @@ const FAQCTAAds = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+          <h2 className="font-unbounded text-3xl md:text-4xl font-bold text-white mb-4">
             Pertanyaan yang Sering Diajukan
           </h2>
           <p className="text-[#A0B4CC]">
@@ -65,7 +65,7 @@ const FAQCTAAds = () => {
                 onClick={() => toggleFAQ(index)}
                 className="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-[#0D1F3C] transition-colors"
               >
-                <span className="text-white font-medium pr-4">{faq.q}</span>
+                <span className="font-unbounded text-white font-medium pr-4">{faq.q}</span>
                 <ChevronDown 
                   className={`w-5 h-5 text-[#00D4FF] shrink-0 transition-transform duration-300 ${openIndex === index ? 'rotate-180' : ''}`}
                 />
@@ -108,7 +108,7 @@ const FAQCTAAds = () => {
               <ShieldCheck className="w-8 h-8 text-[#FF6B35]" />
             </div>
             
-            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
+            <h2 className="font-playfair text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
               Hentikan Iklan yang <br className="hidden md:block" />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6B35] to-[#FF8C61]">Membuang Uang Anda</span>
             </h2>

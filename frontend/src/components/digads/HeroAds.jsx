@@ -148,10 +148,10 @@ const HeroAds = () => {
           >
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[rgba(0,212,255,0.05)] border border-[rgba(0,212,255,0.2)] mb-8">
               <Megaphone className="w-4 h-4 text-[#00D4FF]" />
-              <span className="text-sm font-medium tracking-wide text-[#00D4FF] uppercase">Digital Advertising</span>
+              <span className="font-unbounded text-xs font-medium tracking-widest text-[#00D4FF] uppercase">Digital Advertising</span>
             </div>
 
-            <h1 className="text-5xl lg:text-7xl font-bold text-white mb-6 leading-[1.1]">
+            <h1 className="font-playfair text-5xl lg:text-7xl font-bold text-white mb-6 leading-[1.1]">
               Iklan yang Bukan Hanya Ramai — <br className="hidden md:block" />
               Tapi <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00D4FF] to-[#FF6B35]">Menghasilkan.</span>
             </h1>
@@ -181,15 +181,15 @@ const HeroAds = () => {
             {/* Stats row */}
             <div className="grid grid-cols-3 gap-6 pt-8 border-t border-[rgba(0,212,255,0.1)]">
               <div>
-                <p className="text-3xl font-bold text-white mb-1">Rp 2M+</p>
+                <p className="font-playfair text-4xl font-bold text-white mb-1">Rp 2M+</p>
                 <p className="text-xs text-[#A0B4CC] uppercase tracking-wider">Ad Spend Dikelola</p>
               </div>
               <div>
-                <p className="text-3xl font-bold text-white mb-1">4.2x</p>
+                <p className="font-playfair text-4xl font-bold text-white mb-1">4.2x</p>
                 <p className="text-xs text-[#A0B4CC] uppercase tracking-wider">Rata-rata ROAS</p>
               </div>
               <div>
-                <p className="text-3xl font-bold text-white mb-1">30+</p>
+                <p className="font-playfair text-4xl font-bold text-white mb-1">30+</p>
                 <p className="text-xs text-[#A0B4CC] uppercase tracking-wider">Campaign Aktif</p>
               </div>
             </div>

@@ -47,7 +47,7 @@ const PainPoints = () => {
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+          <h2 className="font-unbounded text-4xl md:text-5xl font-bold text-white mb-6">
             Apakah Iklan Anda Mengalami Ini?
           </h2>
         </motion.div>
@@ -65,7 +65,7 @@ const PainPoints = () => {
               <div className="bg-[#FF6B35]/10 w-16 h-16 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                 {item.icon}
               </div>
-              <h3 className="text-xl font-bold text-white mb-3 leading-tight">{item.title}</h3>
+              <h3 className="font-unbounded text-xl font-bold text-white mb-3 leading-tight">{item.title}</h3>
               <p className="text-[#A0B4CC] leading-relaxed">{item.desc}</p>
             </motion.div>
           ))}

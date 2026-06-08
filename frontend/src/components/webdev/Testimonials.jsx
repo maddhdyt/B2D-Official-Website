@@ -31,7 +31,7 @@ export default function Testimonials() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-5xl font-bold text-white"
+            className="font-unbounded text-3xl md:text-5xl font-bold text-white"
           >
             Apa Kata Klien Kami
           </motion.h2>
@@ -55,7 +55,7 @@ export default function Testimonials() {
                 ))}
               </div>
               
-              <p className="text-[#A0B4CC] leading-relaxed mb-8 flex-grow italic">
+              <p className="font-playfair text-lg md:text-xl text-[#A0B4CC] leading-relaxed mb-8 flex-grow italic">
                 "{testi.content}"
               </p>
               
@@ -64,7 +64,7 @@ export default function Testimonials() {
                   {testi.initials}
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-white font-bold text-sm">{testi.name}</span>
+                  <span className="font-unbounded text-white font-semibold text-sm">{testi.name}</span>
                   <span className="text-[#4A6080] text-xs">{testi.role}</span>
                 </div>
               </div>

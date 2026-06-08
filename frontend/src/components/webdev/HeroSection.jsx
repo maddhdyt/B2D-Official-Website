@@ -22,14 +22,14 @@ export default function HeroSection() {
             className="flex items-center gap-2 px-4 py-2 rounded-full border border-[#00D4FF]/30 bg-[#00D4FF]/5 backdrop-blur-sm"
           >
             <CodeXml className="w-4 h-4 text-[#00D4FF]" />
-            <span className="text-sm font-medium text-[#00D4FF] tracking-wide uppercase">Web Design & Development</span>
+            <span className="font-unbounded text-xs font-medium text-[#00D4FF] tracking-widest uppercase">Web Design & Development</span>
           </motion.div>
 
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-4xl md:text-6xl font-bold leading-tight text-white tracking-tight"
+            className="font-playfair text-5xl md:text-7xl font-bold leading-tight text-white tracking-tight"
           >
             Website yang Bukan <br className="hidden md:block" />
             Sekadar Tampilan — <br className="hidden md:block" />
@@ -67,15 +67,15 @@ export default function HeroSection() {
             className="grid grid-cols-3 gap-8 mt-6 pt-8 border-t border-white/10 w-full max-w-xl"
           >
             <div>
-              <div className="text-3xl font-bold text-white mb-1">50+</div>
+              <div className="font-playfair text-4xl md:text-5xl font-bold text-white mb-1">50+</div>
               <div className="text-sm text-[#4A6080]">Proyek Selesai</div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-white mb-1">98%</div>
+              <div className="font-playfair text-4xl md:text-5xl font-bold text-white mb-1">98%</div>
               <div className="text-sm text-[#4A6080]">Klien Puas</div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-white mb-1">5</div>
+              <div className="font-playfair text-4xl md:text-5xl font-bold text-white mb-1">5</div>
               <div className="text-sm text-[#4A6080]">Jenis Produk</div>
             </div>
           </motion.div>

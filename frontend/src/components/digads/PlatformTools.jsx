@@ -19,7 +19,7 @@ const PlatformTools = () => {
   return (
     <section className="py-20 bg-[#050A18] overflow-hidden border-y border-[rgba(0,212,255,0.05)]">
       <div className="max-w-7xl mx-auto px-6 mb-12 text-center">
-        <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+        <h2 className="font-unbounded text-3xl md:text-4xl font-bold text-white mb-4">
           Platform & Tools yang Kami Kuasai
         </h2>
         <p className="text-[#A0B4CC]">
@@ -46,7 +46,7 @@ const PlatformTools = () => {
             {platforms.map((platform, index) => (
               <div 
                 key={index}
-                className="whitespace-nowrap px-8 py-4 bg-[#0A1628] border border-[rgba(0,212,255,0.2)] rounded-full text-[#A0B4CC] font-medium text-lg shadow-[0_0_15px_rgba(0,212,255,0.05)]"
+                className="font-unbounded whitespace-nowrap px-8 py-4 bg-[#0A1628] border border-[rgba(0,212,255,0.2)] rounded-full text-[#A0B4CC] font-medium text-lg shadow-[0_0_15px_rgba(0,212,255,0.05)]"
               >
                 {platform}
               </div>
@@ -68,7 +68,7 @@ const PlatformTools = () => {
             {tools.map((tool, index) => (
               <div 
                 key={index}
-                className="whitespace-nowrap px-8 py-4 bg-[#0A1628] border border-[rgba(0,212,255,0.2)] rounded-full text-[#A0B4CC] font-medium text-lg shadow-[0_0_15px_rgba(0,212,255,0.05)]"
+                className="font-unbounded whitespace-nowrap px-8 py-4 bg-[#0A1628] border border-[rgba(0,212,255,0.2)] rounded-full text-[#A0B4CC] font-medium text-lg shadow-[0_0_15px_rgba(0,212,255,0.05)]"
               >
                 {tool}
               </div>

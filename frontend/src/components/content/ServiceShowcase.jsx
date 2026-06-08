@@ -132,7 +132,7 @@ const ServiceShowcase = () => {
           transition={{ duration: 0.6 }}
           className="mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+          <h2 className="font-playfair text-4xl md:text-5xl font-bold text-white mb-4">
             Apa yang Kami Kerjakan
           </h2>
           <p className="text-[#A0B4CC] text-lg max-w-2xl">
@@ -189,7 +189,7 @@ const ServiceShowcase = () => {
                     </div>
                   </div>
 
-                  <h3 className={`font-bold text-white mb-2 ${service.size === 'large' ? 'text-3xl' : 'text-xl'}`}>
+                  <h3 className={`font-unbounded font-bold text-white mb-2 ${service.size === 'large' ? 'text-3xl' : 'text-xl'}`}>
                     {service.title}
                   </h3>
                   <p className="text-[#A0B4CC] text-sm leading-relaxed mb-4">

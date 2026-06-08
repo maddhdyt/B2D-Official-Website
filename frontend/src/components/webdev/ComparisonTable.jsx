@@ -23,7 +23,7 @@ export default function ComparisonTable() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-5xl font-bold text-white"
+            className="font-unbounded text-3xl md:text-5xl font-bold text-white"
           >
             Pilih Solusi yang Tepat untuk Bisnis Anda
           </motion.h2>
@@ -40,21 +40,21 @@ export default function ComparisonTable() {
             <table className="w-full text-left border-collapse">
               <thead>
                 <tr>
-                  <th className="p-6 bg-[#0D1F3C] text-white font-bold w-[20%] border-b border-[rgba(0,212,255,0.12)]">Fitur</th>
-                  <th className="p-6 bg-[#0D1F3C] text-center text-white font-bold w-[20%] border-b border-[rgba(0,212,255,0.12)]">WP Profile</th>
-                  <th className="p-6 bg-gradient-to-b from-[#00D4FF]/20 to-[#0D1F3C] text-center text-[#00D4FF] font-bold w-[20%] border-b border-[#00D4FF]/50 relative">
+                  <th className="font-unbounded p-6 bg-[#0D1F3C] text-white font-bold w-[20%] border-b border-[rgba(0,212,255,0.12)]">Fitur</th>
+                  <th className="font-unbounded p-6 bg-[#0D1F3C] text-center text-white font-bold w-[20%] border-b border-[rgba(0,212,255,0.12)]">WP Profile</th>
+                  <th className="font-unbounded p-6 bg-gradient-to-b from-[#00D4FF]/20 to-[#0D1F3C] text-center text-[#00D4FF] font-bold w-[20%] border-b border-[#00D4FF]/50 relative">
                     <div className="absolute top-0 left-0 w-full h-[2px] bg-[#00D4FF] shadow-[0_0_10px_#00D4FF]" />
                     Custom Code
                     <div className="text-xs font-normal text-white/70 mt-1">RECOMMENDED</div>
                   </th>
-                  <th className="p-6 bg-[#0D1F3C] text-center text-white font-bold w-[20%] border-b border-[rgba(0,212,255,0.12)]">Landing Page</th>
-                  <th className="p-6 bg-[#0D1F3C] text-center text-white font-bold w-[20%] border-b border-[rgba(0,212,255,0.12)]">CRM/ERP</th>
+                  <th className="font-unbounded p-6 bg-[#0D1F3C] text-center text-white font-bold w-[20%] border-b border-[rgba(0,212,255,0.12)]">Landing Page</th>
+                  <th className="font-unbounded p-6 bg-[#0D1F3C] text-center text-white font-bold w-[20%] border-b border-[rgba(0,212,255,0.12)]">CRM/ERP</th>
                 </tr>
               </thead>
               <tbody>
                 {features.map((feature, index) => (
                   <tr key={index} className="border-b border-[rgba(0,212,255,0.05)] hover:bg-white/[0.02] transition-colors">
-                    <td className="p-6 text-white font-medium">{feature.name}</td>
+                    <td className="font-unbounded p-6 text-white font-medium">{feature.name}</td>
                     <td className="p-6 text-center text-[#A0B4CC]">
                       {typeof feature.wp === 'boolean' ? (feature.wp ? <CheckIcon /> : <MinusIcon />) : feature.wp}
                     </td>

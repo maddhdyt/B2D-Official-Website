@@ -52,7 +52,7 @@ const CaseStudies = () => {
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+          <h2 className="font-unbounded text-4xl md:text-5xl font-bold text-white mb-6">
             Hasil Nyata untuk Klien Nyata
           </h2>
           <p className="text-[#A0B4CC] text-lg">
@@ -79,7 +79,7 @@ const CaseStudies = () => {
                     Budget: {study.budget}
                   </span>
                 </div>
-                <h3 className="text-xl font-bold text-white leading-tight mb-1">{study.client}</h3>
+                <h3 className="font-unbounded text-xl font-bold text-white leading-tight mb-1">{study.client}</h3>
                 <p className="text-sm text-[#4A6080]">{study.location}</p>
               </div>
 
@@ -88,7 +88,7 @@ const CaseStudies = () => {
                   <div key={i}>
                     <p className="text-sm text-[#A0B4CC] mb-1">{metric.label}</p>
                     <div className="flex items-baseline gap-2">
-                      <span className={`text-3xl font-bold ${metric.positive ? 'text-[#10B981]' : 'text-white'}`}>
+                      <span className={`font-playfair text-3xl font-bold ${metric.positive ? 'text-[#10B981]' : 'text-white'}`}>
                         {metric.value}
                       </span>
                       <span className="text-xs text-[#4A6080]">{metric.sub}</span>

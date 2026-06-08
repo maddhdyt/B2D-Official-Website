@@ -1,4 +1,5 @@
 import { domAnimation, LazyMotion, m } from "framer-motion";
+import favicon from "../assets/favicon.png";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -67,11 +68,7 @@ export default function TestimonialSection() {
             variants={fadeUp}
           >
             <div className="mb-8 flex items-center gap-3">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="8" cy="12" r="4" stroke="#00A8FF" strokeWidth="2"/>
-                <circle cx="16" cy="12" r="4" stroke="#3ABEFF" strokeWidth="2"/>
-                <path d="M12 12L16 12" stroke="#1E90FF" strokeWidth="2"/>
-              </svg>
+              <img src={favicon} alt="Logo" className="h-8 object-contain" />
               <span className="text-white font-bold tracking-widest uppercase text-sm">GE Ventures</span>
             </div>
 

@@ -36,7 +36,7 @@ function FAQItem({ faq, isOpen, toggleOpen }) {
         onClick={toggleOpen}
         className="w-full flex items-center justify-between p-6 text-left focus:outline-none"
       >
-        <span className="text-white font-medium text-lg pr-4">{faq.question}</span>
+        <span className="font-unbounded text-white font-medium text-lg pr-4">{faq.question}</span>
         <ChevronDown 
           className={`w-6 h-6 flex-shrink-0 transition-transform duration-300 text-[#00D4FF] ${isOpen ? "rotate-180" : ""}`} 
         />
@@ -70,7 +70,7 @@ export default function FAQSection() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-5xl font-bold text-white"
+            className="font-unbounded text-3xl md:text-5xl font-bold text-white"
           >
             Pertanyaan yang Sering Diajukan
           </motion.h2>

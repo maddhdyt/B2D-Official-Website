@@ -81,13 +81,13 @@ const HeroContent = () => {
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#0D1F3C]/50 border border-transparent [background:linear-gradient(#0D1F3C,#0D1F3C)_padding-box,linear-gradient(to_right,#00D4FF,#8B5CF6)_border-box] mb-8">
             <PenTool className="w-4 h-4 text-[#8B5CF6]" />
-            <span className="text-sm font-semibold tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-[#00D4FF] to-[#8B5CF6] uppercase">
+            <span className="font-unbounded text-xs font-semibold tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-[#00D4FF] to-[#8B5CF6] uppercase">
               Content & Creative
             </span>
           </div>
 
           {/* Headline */}
-          <h1 className="text-6xl md:text-8xl font-bold text-white mb-8 tracking-tight flex flex-col gap-2">
+          <h1 className="font-playfair text-6xl md:text-8xl font-black text-white mb-8 tracking-tight flex flex-col gap-2">
             <span>Konten yang</span>
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00D4FF] via-[#8B5CF6] to-[#EC4899] pb-2">
               Tidak Bisa
@@ -121,15 +121,15 @@ const HeroContent = () => {
           {/* Stats */}
           <div className="grid grid-cols-3 gap-8 max-w-3xl mx-auto pt-10 border-t border-[rgba(255,255,255,0.05)]">
             <div className="text-center">
-              <p className="text-4xl font-bold text-white mb-2">200+</p>
+              <p className="font-playfair text-4xl font-bold text-white mb-2">200+</p>
               <p className="text-xs text-[#A0B4CC] uppercase tracking-wider font-semibold">Konten Diproduksi</p>
             </div>
             <div className="text-center border-x border-[rgba(255,255,255,0.05)]">
-              <p className="text-4xl font-bold text-white mb-2">15+</p>
+              <p className="font-playfair text-4xl font-bold text-white mb-2">15+</p>
               <p className="text-xs text-[#A0B4CC] uppercase tracking-wider font-semibold">Brand Ditangani</p>
             </div>
             <div className="text-center">
-              <p className="text-4xl font-bold text-white mb-2">3x</p>
+              <p className="font-playfair text-4xl font-bold text-white mb-2">3x</p>
               <p className="text-xs text-[#A0B4CC] uppercase tracking-wider font-semibold">Rata-rata Engagement</p>
             </div>
           </div>

@@ -91,7 +91,7 @@ const BrandIdentityShowcase = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+          <h2 className="font-playfair text-4xl md:text-5xl font-bold text-white mb-4">
             Brand Identity yang Kami Bangun
           </h2>
           <p className="text-[#A0B4CC] text-lg max-w-2xl mx-auto">
@@ -113,7 +113,7 @@ const BrandIdentityShowcase = () => {
                 {item.illustration}
               </div>
               <div className="p-6 border-t border-[rgba(255,255,255,0.02)]">
-                <h3 className="text-sm font-bold text-[#A0B4CC] tracking-widest uppercase mb-2">
+                <h3 className="font-unbounded text-sm font-bold text-[#A0B4CC] tracking-widest uppercase mb-2">
                   {item.title}
                 </h3>
                 <p className="text-white text-sm">

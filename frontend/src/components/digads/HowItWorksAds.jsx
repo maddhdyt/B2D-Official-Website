@@ -51,7 +51,7 @@ const HowItWorksAds = () => {
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto mb-20"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+          <h2 className="font-unbounded text-4xl md:text-5xl font-bold text-white mb-6">
             Cara Kami Mengelola Iklan Anda
           </h2>
           <p className="text-[#A0B4CC] text-lg">
@@ -80,7 +80,7 @@ const HowItWorksAds = () => {
                 {/* Step Number with Glow */}
                 <div className="relative shrink-0 lg:mx-auto lg:mb-8">
                   <div className="w-20 h-20 bg-[#050A18] border-2 border-[#00D4FF] rounded-2xl flex flex-col items-center justify-center relative z-10 shadow-[0_0_20px_rgba(0,212,255,0.2)]">
-                    <span className="text-2xl font-bold text-[#00D4FF] leading-none">{item.step}</span>
+                    <span className="font-playfair text-2xl font-bold text-[#00D4FF] leading-none">{item.step}</span>
                   </div>
                   {/* Decorative glow behind number */}
                   <div className="absolute inset-0 bg-[#00D4FF] blur-xl opacity-20 rounded-2xl" />
@@ -91,7 +91,7 @@ const HowItWorksAds = () => {
                   <div className="text-[#FF6B35] text-sm font-bold tracking-wider uppercase mb-2">
                     {item.time}
                   </div>
-                  <h3 className="text-xl font-bold text-white mb-3">{item.title}</h3>
+                  <h3 className="font-unbounded text-xl font-bold text-white mb-3">{item.title}</h3>
                   <p className="text-[#A0B4CC] text-sm leading-relaxed mb-4">
                     {item.desc}
                   </p>

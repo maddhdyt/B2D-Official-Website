@@ -110,7 +110,7 @@ const CreativeProcess = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-20"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+          <h2 className="font-playfair text-4xl md:text-5xl font-bold text-white mb-4">
             Proses Kreatif Kami
           </h2>
           <p className="text-[#A0B4CC] text-lg max-w-2xl mx-auto">
@@ -134,7 +134,7 @@ const CreativeProcess = () => {
                   className="flex-1 w-full"
                 >
                   <div className="flex items-center gap-4 mb-6">
-                    <span className="text-5xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-white/20 to-transparent">
+                    <span className="font-playfair text-5xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-white/20 to-transparent">
                       {step.num}
                     </span>
                     <div className="p-3 rounded-xl bg-[#0A1628] border border-[rgba(255,255,255,0.05)]">
@@ -142,7 +142,7 @@ const CreativeProcess = () => {
                     </div>
                   </div>
                   
-                  <h3 className="text-3xl font-bold text-white mb-4">{step.title}</h3>
+                  <h3 className="font-unbounded text-3xl font-bold text-white mb-4">{step.title}</h3>
                   <p className="text-[#A0B4CC] text-lg leading-relaxed mb-8">
                     {step.desc}
                   </p>

@@ -60,7 +60,7 @@ export default function ProductCatalog() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-5xl font-bold text-white mb-6"
+            className="font-unbounded text-3xl md:text-5xl font-bold text-white mb-6"
           >
             Produk & Layanan Kami
           </motion.h2>
@@ -88,7 +88,7 @@ export default function ProductCatalog() {
                 className={`group relative flex flex-col p-8 rounded-2xl bg-[#0D1F3C]/80 backdrop-blur-xl border border-[rgba(0,212,255,0.12)] hover:border-[#00D4FF]/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,212,255,0.1)] ${product.colSpan || ''}`}
               >
                 {product.popular && (
-                  <div className="absolute top-0 right-8 -translate-y-1/2 px-4 py-1 rounded-full bg-gradient-to-r from-[#00D4FF] to-[#00B4D8] text-[#050A18] text-xs font-bold tracking-wider shadow-[0_0_20px_rgba(0,212,255,0.4)]">
+                  <div className="font-unbounded absolute top-0 right-8 -translate-y-1/2 px-4 py-1 rounded-full bg-gradient-to-r from-[#00D4FF] to-[#00B4D8] text-[#050A18] text-xs font-bold tracking-wider shadow-[0_0_20px_rgba(0,212,255,0.4)]">
                     {product.badge || "POPULAR"}
                   </div>
                 )}
@@ -101,13 +101,13 @@ export default function ProductCatalog() {
                   {product.tech}
                 </div>
                 
-                <h3 className="text-xl md:text-2xl font-bold text-white mb-2">{product.title}</h3>
+                <h3 className="font-unbounded text-xl md:text-2xl font-semibold text-white mb-2">{product.title}</h3>
                 <p className="text-[#A0B4CC] mb-8 flex-grow">{product.description}</p>
                 
                 <div className="flex items-end justify-between mt-auto pt-6 border-t border-white/10">
                   <div>
                     <div className="text-xs text-[#4A6080] mb-1">Mulai dari</div>
-                    <div className="text-xl font-bold text-white">{product.price}</div>
+                    <div className="font-unbounded text-xl font-bold text-white">{product.price}</div>
                   </div>
                   <button className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-[#00D4FF] group-hover:bg-[#00D4FF] group-hover:text-[#050A18] transition-all duration-300">
                     <ArrowRight className="w-5 h-5" />
