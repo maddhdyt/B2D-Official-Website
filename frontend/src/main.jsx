@@ -3,11 +3,14 @@ import { createRoot, hydrateRoot } from "react-dom/client";
 import App from "./App";
 import { reportWebVitals } from "./services/webVitals";
 import "./styles/globals.css";
+import SmoothScroll from "./components/SmoothScroll";
 
 const rootElement = document.getElementById("root");
 const app = (
   <StrictMode>
-    <App />
+    <SmoothScroll>
+      <App />
+    </SmoothScroll>
   </StrictMode>
 );
 

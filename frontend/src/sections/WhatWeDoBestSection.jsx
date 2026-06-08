@@ -68,7 +68,7 @@ export default function WhatWeDoBestSection() {
       <MotionConfig reducedMotion="user">
         <section
           id="services"
-          className="services-section relative w-full max-w-[100vw] overflow-hidden bg-gradient-to-br from-[#0e3b5e] to-[#1884c2] px-5 py-24 md:py-32 lg:py-40"
+          className="services-section relative w-full overflow-clip bg-gradient-to-br from-[#0e3b5e] to-[#1884c2] px-5 py-24 md:py-32 lg:py-40"
           aria-labelledby="services-title"
         >
           <div className="services-section-ambient" aria-hidden="true" />
@@ -80,7 +80,7 @@ export default function WhatWeDoBestSection() {
             initial="hidden"
             whileInView="visible"
             variants={panelReveal}
-            viewport={{ amount: 0.12, once: true }}
+            viewport={{ once: true, margin: "0px 0px -50px 0px" }}
           >
             <header className="services-panel-header">
               <p>Core Capabilities</p>

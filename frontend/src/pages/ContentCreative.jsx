@@ -17,7 +17,7 @@ const ContentCreative = () => {
 
   return (
     <>
-      <div className="bg-[#050A18] min-h-screen text-[#FFFFFF] overflow-hidden">
+      <div className="bg-[#050A18] min-h-screen text-[#FFFFFF] overflow-x-hidden">
         <HeroContent />
         <ServiceShowcase />
         <CreativeProcess />

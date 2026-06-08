@@ -55,7 +55,7 @@ function ArticleCard({ article, index }) {
         transition: { delay: 0.12 + index * 0.12, duration: 1, ease },
         y: 0,
       }}
-      viewport={{ amount: 0.2, once: true }}
+      viewport={{ once: true, margin: "0px 0px -50px 0px" }}
     >
       <a href={article.href} aria-label={`Read article: ${article.title}`}>
         <div className="insights-article-media">
@@ -87,11 +87,11 @@ export default function InsightsSection() {
       <MotionConfig reducedMotion="user">
         <m.section
           id="insights"
-          className="insights-section relative w-full max-w-[100vw] overflow-hidden bg-[#07080A] px-5 py-24 md:py-32 lg:py-40"
+          className="insights-section relative w-full overflow-clip bg-[#07080A] px-5 py-24 md:py-32 lg:py-40"
           aria-labelledby="insights-title"
           initial="hidden"
           whileInView="visible"
-          viewport={{ amount: 0.08, once: true }}
+          viewport={{ once: true, margin: "0px 0px -100px 0px" }}
         >
           <div className="insights-ambient" aria-hidden="true" />
           <span className="insights-glow-dot insights-glow-dot-one" aria-hidden="true" />

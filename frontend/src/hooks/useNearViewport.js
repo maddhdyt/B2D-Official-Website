@@ -13,7 +13,12 @@ export default function useNearViewport({ rootMargin = "400px" } = {}) {
     }
 
     const observer = new IntersectionObserver(
-      ([entry]) => setIsNearViewport(entry.isIntersecting),
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsNearViewport(true);
+          observer.disconnect();
+        }
+      },
       { rootMargin },
     );
 

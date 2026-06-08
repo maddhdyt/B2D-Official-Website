@@ -11,7 +11,7 @@ import Footer from "../components/Footer";
 export default function WebDesignDevelopment() {
   return (
     <>
-      <main className="w-full bg-[#050A18] overflow-hidden text-white">
+      <main className="w-full bg-[#050A18] overflow-x-hidden text-white">
         <HeroSection />
         <ProductCatalog />
         <WhyB2D />
