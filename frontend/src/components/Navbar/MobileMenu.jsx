@@ -4,9 +4,9 @@ import { X } from "lucide-react";
 import MobileAccordion from "./MobileAccordion";
 
 const navItems = [
-  { label: "About", href: "#about" },
-  { label: "Portfolio", href: "#portfolio" },
-  { label: "Blog", href: "#blog" },
+  { label: "About", href: "/about" },
+  { label: "Portfolio", href: "/portfolio" },
+  { label: "Blog", href: "/blog" },
 ];
 
 export default function MobileMenu({ isOpen, closeMenu, onOpenContact }) {

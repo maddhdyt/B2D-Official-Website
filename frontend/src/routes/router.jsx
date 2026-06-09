@@ -14,6 +14,22 @@ export const router = createBrowserRouter([
     element: <RoutedSiteLayout />,
     children: [
       {
+        path: "/blog",
+        lazy: () => import("../pages/BlogListing").then(m => ({ Component: m.default })),
+      },
+      {
+        path: "/blog/:slug",
+        lazy: () => import("../pages/BlogDetail").then(m => ({ Component: m.default })),
+      },
+      {
+        path: "/portfolio",
+        lazy: () => import("../pages/Portfolio").then(m => ({ Component: m.default })),
+      },
+      {
+        path: "/about",
+        lazy: () => import("../pages/AboutUs").then(m => ({ Component: m.default })),
+      },
+      {
         path: "/service/web-design-development",
         lazy: () => import("../pages/WebDesignDevelopment").then(m => ({ Component: m.default })),
       },
