@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Footer from '../components/Footer';
-import { portfolioProjects } from '../data/portfolioProjects';
+import api from '../api/axios';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -11,17 +11,36 @@ export default function Portfolio() {
   const heroRef = useRef(null);
   const cardsRef = useRef([]);
 
-  // Generate 20 random floating cards based on the 5 original projects
-  const [floatingCards] = useState(() => {
+  const [portfolios, setPortfolios] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [floatingCards, setFloatingCards] = useState([]);
+
+  useEffect(() => {
+    const fetchPortfolios = async () => {
+      try {
+        const res = await api.get("/portfolios");
+        if (res.data.success) {
+          setPortfolios(res.data.data);
+        }
+      } catch (error) {
+        console.error("Failed to fetch portfolios", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchPortfolios();
+  }, []);
+
+  // Generate 20 random floating cards based on the projects
+  useEffect(() => {
+    if (portfolios.length === 0) return;
     const cards = [];
     for (let i = 0; i < 20; i++) {
-      const project = portfolioProjects[i % portfolioProjects.length];
-      // Randomize position, depth, and scale
+      const project = portfolios[i % portfolios.length];
       const isForeground = Math.random() > 0.5;
       cards.push({
         id: `float-${i}`,
         project,
-        // Spread cards organically (avoiding the exact center where the text is)
         top: Math.random() > 0.5 ? `${Math.random() * 30}%` : `${70 + Math.random() * 30}%`,
         left: Math.random() > 0.5 ? `${Math.random() * 30}%` : `${70 + Math.random() * 30}%`,
         scale: isForeground ? 0.8 + Math.random() * 0.7 : 0.3 + Math.random() * 0.4,
@@ -31,10 +50,11 @@ export default function Portfolio() {
         parallaxSpeed: isForeground ? 0.05 + Math.random() * 0.05 : 0.01 + Math.random() * 0.02
       });
     }
-    return cards;
-  });
+    setFloatingCards(cards);
+  }, [portfolios]);
 
   useEffect(() => {
+    if (floatingCards.length === 0) return;
     window.scrollTo(0, 0);
     const ctx = gsap.context(() => {
       // 1. Entrance Stagger for floating cards
@@ -145,6 +165,10 @@ export default function Portfolio() {
     };
   }, [floatingCards]);
 
+  if (loading) {
+    return <div className="w-full min-h-screen bg-[#030303]"></div>;
+  }
+
   return (
     <>
       <main ref={containerRef} className="w-full min-h-screen bg-[#030303] text-white overflow-x-hidden">
@@ -172,7 +196,7 @@ export default function Portfolio() {
               >
                 <div className="absolute inset-0 bg-[#00D4FF]/10 mix-blend-overlay z-10" />
                 <img 
-                  src={card.project.image.webp} 
+                  src={card.project.coverImage} 
                   alt="" 
                   className="w-full h-full object-cover filter contrast-125 saturate-50"
                 />
@@ -210,14 +234,14 @@ export default function Portfolio() {
             </div>
 
             <div className="flex flex-col gap-32">
-              {portfolioProjects.map((project, idx) => (
+              {portfolios.map((project, idx) => (
                 <div key={project.id} className="project-row grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 group">
                   
                   {/* Left: Project Image */}
                   <div className="lg:col-span-8 overflow-hidden rounded-sm relative cursor-pointer">
                     <div className="absolute inset-0 bg-[#00D4FF]/0 group-hover:bg-[#00D4FF]/10 transition-colors duration-500 z-10 pointer-events-none" />
                     <img 
-                      src={project.image.webp} 
+                      src={project.coverImage} 
                       alt={project.title}
                       className="w-full h-full object-cover aspect-[16/9] transform group-hover:scale-105 transition-transform duration-1000 ease-[0.25,1,0.5,1]"
                     />
@@ -226,7 +250,7 @@ export default function Portfolio() {
                   {/* Right: Editorial Data */}
                   <div className="lg:col-span-4 flex flex-col justify-center">
                     <span className="font-unbounded text-xs uppercase tracking-[0.2em] text-[#00D4FF] mb-6">
-                      {project.category}
+                      {project.category?.name || "Uncategorized"}
                     </span>
                     <h3 className="text-4xl md:text-5xl font-playfair font-bold mb-8 group-hover:text-white transition-colors">
                       {project.title}

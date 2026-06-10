@@ -6,15 +6,18 @@ import "./styles/globals.css";
 import SmoothScroll from "./components/SmoothScroll";
 import FloatingWhatsApp from "./components/common/FloatingWhatsApp";
 import CustomCursor from "./components/common/CustomCursor";
+import { AuthProvider } from "./contexts/AuthContext";
 
 const rootElement = document.getElementById("root");
 const app = (
   <StrictMode>
-    <SmoothScroll>
-      <CustomCursor />
-      <App />
-      <FloatingWhatsApp />
-    </SmoothScroll>
+    <AuthProvider>
+      <SmoothScroll>
+        <CustomCursor />
+        <App />
+        <FloatingWhatsApp />
+      </SmoothScroll>
+    </AuthProvider>
   </StrictMode>
 );
 

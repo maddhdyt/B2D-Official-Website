@@ -1,5 +1,6 @@
 import { createBrowserRouter, Outlet } from "react-router-dom";
 import SiteLayout from "../layouts/SiteLayout";
+import ProtectedRoute from "../components/admin/ProtectedRoute";
 
 function RoutedSiteLayout() {
   return (
@@ -47,4 +48,56 @@ export const router = createBrowserRouter([
       },
     ],
   },
+  {
+    path: "/admin/login",
+    lazy: () => import("../pages/admin/Login").then(m => ({ Component: m.default })),
+  },
+  {
+    path: "/admin",
+    element: <ProtectedRoute />,
+    children: [
+      {
+        path: "",
+        lazy: () => import("../layouts/AdminLayout").then(m => ({ Component: m.default })),
+        children: [
+          {
+            path: "dashboard",
+            lazy: () => import("../pages/admin/Dashboard").then(m => ({ Component: m.default })),
+          },
+          {
+            path: "blogs",
+            lazy: () => import("../pages/admin/blogs/BlogList").then(m => ({ Component: m.default })),
+          },
+          {
+            path: "blogs/create",
+            lazy: () => import("../pages/admin/blogs/BlogForm").then(m => ({ Component: m.default })),
+          },
+          {
+            path: "blogs/edit/:slug",
+            lazy: () => import("../pages/admin/blogs/BlogForm").then(m => ({ Component: m.default })),
+          },
+          {
+            path: "portfolios",
+            lazy: () => import("../pages/admin/portfolios/PortfolioList").then(m => ({ Component: m.default })),
+          },
+          {
+            path: "portfolios/create",
+            lazy: () => import("../pages/admin/portfolios/PortfolioForm").then(m => ({ Component: m.default })),
+          },
+          {
+            path: "portfolios/edit/:slug",
+            lazy: () => import("../pages/admin/portfolios/PortfolioForm").then(m => ({ Component: m.default })),
+          },
+          {
+            path: "leads",
+            lazy: () => import("../pages/admin/leads/LeadList").then(m => ({ Component: m.default })),
+          },
+          {
+            path: "seo",
+            lazy: () => import("../pages/admin/seo/SeoList").then(m => ({ Component: m.default })),
+          }
+        ]
+      }
+    ]
+  }
 ]);

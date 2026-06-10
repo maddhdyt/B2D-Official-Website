@@ -1,20 +1,39 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Footer from '../components/Footer';
-import { blogArticles } from '../data/blogData';
+import api from '../api/axios';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function BlogListing() {
   const containerRef = useRef(null);
-
-  // Split the articles
-  const featuredArticle = blogArticles[0];
-  const gridArticles = blogArticles.slice(1);
+  const [articles, setArticles] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    const fetchBlogs = async () => {
+      try {
+        const res = await api.get("/blogs?status=PUBLISHED");
+        if (res.data.success) {
+          setArticles(res.data.data);
+        }
+      } catch (error) {
+        console.error("Failed to fetch blogs", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchBlogs();
+  }, []);
+
+  // Split the articles
+  const featuredArticle = articles.length > 0 ? articles[0] : null;
+  const gridArticles = articles.length > 1 ? articles.slice(1) : [];
+
+  useEffect(() => {
+    if (loading) return;
     window.scrollTo(0, 0);
     const ctx = gsap.context(() => {
       // Hero text animations
@@ -51,7 +70,11 @@ export default function BlogListing() {
     }, containerRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [loading]);
+
+  if (loading) {
+    return <div className="w-full min-h-screen bg-[#030303]"></div>;
+  }
 
   return (
     <>
@@ -91,7 +114,7 @@ export default function BlogListing() {
                   <div className="w-full overflow-hidden rounded-sm aspect-[4/3] lg:aspect-[16/10] relative">
                     <div className="absolute inset-0 bg-[#00D4FF]/0 group-hover:bg-[#00D4FF]/10 transition-colors duration-500 z-10 pointer-events-none" />
                     <img 
-                      src={featuredArticle.image.webp} 
+                      src={featuredArticle.featuredImage} 
                       alt={featuredArticle.title}
                       className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-1000 ease-[0.25,1,0.5,1]"
                     />
@@ -101,11 +124,11 @@ export default function BlogListing() {
                   <div className="flex flex-col justify-center">
                     <div className="flex gap-4 items-center mb-6">
                       <span className="font-unbounded text-xs uppercase tracking-[0.2em] text-[#00D4FF]">
-                        {featuredArticle.category}
+                        {featuredArticle.category?.name || "Uncategorized"}
                       </span>
                       <span className="w-1 h-1 rounded-full bg-white/30" />
                       <span className="text-white/50 text-xs font-unbounded tracking-wider">
-                        {featuredArticle.readTime} Read
+                        {featuredArticle.readTime} Min Read
                       </span>
                     </div>
                     
@@ -140,7 +163,7 @@ export default function BlogListing() {
                   <div className="w-full overflow-hidden rounded-sm aspect-[4/3] mb-6 relative">
                     <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none" />
                     <img 
-                      src={article.image.webp} 
+                      src={article.featuredImage} 
                       alt={article.title}
                       className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
                     />
@@ -149,11 +172,11 @@ export default function BlogListing() {
                   {/* Meta */}
                   <div className="flex gap-3 items-center mb-4">
                     <span className="font-unbounded text-[10px] uppercase tracking-widest text-white/50">
-                      {article.category}
+                      {article.category?.name || "Uncategorized"}
                     </span>
                     <span className="text-white/20 text-xs">•</span>
                     <span className="font-sans text-[11px] text-white/40 tracking-wider">
-                      {article.date}
+                      {new Date(article.publishedAt || article.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                     </span>
                   </div>
 

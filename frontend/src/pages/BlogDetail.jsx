@@ -1,9 +1,9 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Footer from '../components/Footer';
-import { blogArticles } from '../data/blogData';
+import api from '../api/axios';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -11,17 +11,36 @@ export default function BlogDetail() {
   const { slug } = useParams();
   const containerRef = useRef(null);
   
-  const article = blogArticles.find(a => a.slug === slug);
-
-  // If article not found, could redirect to /blog or show 404
-  if (!article) {
-    return <Navigate to="/blog" replace />;
-  }
-
-  // Get 3 related articles (excluding current)
-  const relatedArticles = blogArticles.filter(a => a.id !== article.id).slice(0, 3);
+  const [article, setArticle] = useState(null);
+  const [relatedArticles, setRelatedArticles] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
+    const fetchArticle = async () => {
+      try {
+        const res = await api.get(`/blogs/${slug}`);
+        if (res.data.success) {
+          setArticle(res.data.data);
+          
+          // Fetch related articles
+          const relRes = await api.get("/blogs?status=PUBLISHED");
+          if (relRes.data.success) {
+            setRelatedArticles(relRes.data.data.filter(a => a.id !== res.data.data.id).slice(0, 3));
+          }
+        }
+      } catch (err) {
+        console.error(err);
+        setError(true);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchArticle();
+  }, [slug]);
+
+  useEffect(() => {
+    if (loading || error || !article) return;
     window.scrollTo(0, 0);
     
     const ctx = gsap.context(() => {
@@ -77,7 +96,10 @@ export default function BlogDetail() {
     }, containerRef);
 
     return () => ctx.revert();
-  }, [slug]);
+  }, [loading, error, article]);
+
+  if (loading) return <div className="w-full min-h-screen bg-[#030303]"></div>;
+  if (error || !article) return <Navigate to="/blog" replace />;
 
   return (
     <>
@@ -94,7 +116,7 @@ export default function BlogDetail() {
               <span>/</span>
               <Link to="/blog" className="hover:text-white transition-colors">Blog</Link>
               <span>/</span>
-              <span className="text-[#00D4FF]">{article.category}</span>
+              <span className="text-[#00D4FF]">{article.category?.name || "Uncategorized"}</span>
             </nav>
 
             {/* Title */}
@@ -106,17 +128,19 @@ export default function BlogDetail() {
             <div className="reveal-header flex flex-wrap gap-x-8 gap-y-4 items-center border-t border-b border-white/10 py-6">
               <div className="flex flex-col gap-1">
                 <span className="font-unbounded text-[10px] uppercase tracking-widest text-white/40">Author</span>
-                <span className="font-playfair text-lg text-white/90">{article.author}</span>
+                <span className="font-playfair text-lg text-white/90">{article.author?.name || "B2D Team"}</span>
               </div>
               <div className="w-px h-8 bg-white/10 hidden md:block" />
               <div className="flex flex-col gap-1">
                 <span className="font-unbounded text-[10px] uppercase tracking-widest text-white/40">Date</span>
-                <span className="font-sans text-sm text-white/80">{article.date}</span>
+                <span className="font-sans text-sm text-white/80">
+                  {new Date(article.publishedAt || article.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                </span>
               </div>
               <div className="w-px h-8 bg-white/10 hidden md:block" />
               <div className="flex flex-col gap-1">
                 <span className="font-unbounded text-[10px] uppercase tracking-widest text-white/40">Reading Time</span>
-                <span className="font-sans text-sm text-white/80">{article.readTime}</span>
+                <span className="font-sans text-sm text-white/80">{article.readTime} Min</span>
               </div>
             </div>
           </header>
@@ -124,7 +148,7 @@ export default function BlogDetail() {
           {/* Hero Image */}
           <div className="hero-image-container w-full max-w-5xl mx-auto aspect-[16/9] md:aspect-[21/9] rounded-sm overflow-hidden mb-16 md:mb-24">
             <img 
-              src={article.image.webp} 
+              src={article.featuredImage} 
               alt={article.title} 
               className="w-full h-full object-cover"
             />
@@ -146,8 +170,10 @@ export default function BlogDetail() {
             <div className="mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6">
               <div className="flex gap-4 items-center">
                 <span className="font-unbounded text-xs uppercase tracking-widest text-white/50">Tags:</span>
-                <span className="text-xs px-3 py-1 bg-white/5 rounded-full hover:bg-[#00D4FF]/10 hover:text-[#00D4FF] cursor-pointer transition-colors">{article.category}</span>
-                <span className="text-xs px-3 py-1 bg-white/5 rounded-full hover:bg-[#00D4FF]/10 hover:text-[#00D4FF] cursor-pointer transition-colors">Agency</span>
+                <span className="text-xs px-3 py-1 bg-white/5 rounded-full hover:bg-[#00D4FF]/10 hover:text-[#00D4FF] cursor-pointer transition-colors">{article.category?.name || "Uncategorized"}</span>
+                {article.tags?.map(t => (
+                  <span key={t.id} className="text-xs px-3 py-1 bg-white/5 rounded-full hover:bg-[#00D4FF]/10 hover:text-[#00D4FF] cursor-pointer transition-colors">{t.name}</span>
+                ))}
               </div>
               <div className="flex gap-4 items-center">
                 <span className="font-unbounded text-xs uppercase tracking-widest text-white/50">Share:</span>
@@ -176,18 +202,20 @@ export default function BlogDetail() {
                   <div className="w-full overflow-hidden rounded-sm aspect-[16/10] mb-6 relative">
                     <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500 z-10" />
                     <img 
-                      src={rel.image.webp} 
+                      src={rel.featuredImage} 
                       alt={rel.title}
                       className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
                     />
                   </div>
                   <span className="font-unbounded text-[10px] uppercase tracking-widest text-[#00D4FF] mb-3">
-                    {rel.category}
+                    {rel.category?.name || "Uncategorized"}
                   </span>
                   <h3 className="text-xl font-playfair font-bold leading-snug mb-3 group-hover:text-white text-white/90 transition-colors">
                     {rel.title}
                   </h3>
-                  <span className="font-sans text-xs text-white/40">{rel.date}</span>
+                  <span className="font-sans text-xs text-white/40">
+                    {new Date(rel.publishedAt || rel.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                  </span>
                 </Link>
               ))}
             </div>

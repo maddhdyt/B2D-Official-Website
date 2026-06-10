@@ -1,0 +1,162 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+// =======================
+// User Role System
+// =======================
+enum Role {
+  ADMIN
+  EDITOR
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  password  String
+  role      Role     @default(EDITOR)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  blogs     Blog[]
+}
+
+// =======================
+// Blog System
+// =======================
+enum BlogStatus {
+  DRAFT
+  PUBLISHED
+}
+
+model BlogCategory {
+  id        Int      @id @default(autoincrement())
+  name      String
+  slug      String   @unique
+  blogs     Blog[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model BlogTag {
+  id        Int      @id @default(autoincrement())
+  name      String
+  slug      String   @unique
+  blogs     Blog[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Blog {
+  id            Int          @id @default(autoincrement())
+  title         String
+  slug          String       @unique
+  excerpt       String       @db.Text
+  content       String       @db.LongText
+  featuredImage String?
+  seoTitle      String?
+  seoDesc       String?      @db.Text
+  status        BlogStatus   @default(DRAFT)
+  readTime      Int          @default(0) // In minutes
+  publishedAt   DateTime?
+  
+  authorId      Int
+  author        User         @relation(fields: [authorId], references: [id])
+  
+  categoryId    Int
+  category      BlogCategory @relation(fields: [categoryId], references: [id])
+  
+  tags          BlogTag[]
+  
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+}
+
+// =======================
+// Portfolio System
+// =======================
+model PortfolioCategory {
+  id          Int         @id @default(autoincrement())
+  name        String
+  slug        String      @unique
+  portfolios  Portfolio[]
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+}
+
+model Portfolio {
+  id          Int               @id @default(autoincrement())
+  title       String
+  slug        String            @unique
+  shortDesc   String            @db.Text
+  fullDesc    String            @db.LongText
+  coverImage  String?
+  
+  // Relations
+  categoryId  Int
+  category    PortfolioCategory @relation(fields: [categoryId], references: [id])
+  galleries   PortfolioGallery[]
+  
+  // Metadata & Stats
+  techStack   Json              // Array of strings
+  clientName  String?
+  duration    String?
+  projectUrl  String?
+  isFeatured  Boolean           @default(false)
+  metrics     Json?             // Key-value pairs for stats like {"Increase": "300%", "Users": "1M+"}
+  results     String?           @db.Text
+  
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
+}
+
+model PortfolioGallery {
+  id          Int       @id @default(autoincrement())
+  portfolioId Int
+  portfolio   Portfolio @relation(fields: [portfolioId], references: [id], onDelete: Cascade)
+  imageUrl    String
+  sortOrder   Int       @default(0)
+  createdAt   DateTime  @default(now())
+}
+
+// =======================
+// Lead Management System
+// =======================
+enum LeadStatus {
+  NEW
+  CONTACTED
+  CLOSED
+}
+
+model Lead {
+  id                Int        @id @default(autoincrement())
+  name              String
+  email             String
+  phone             String?
+  company           String?
+  interestedService String?
+  budget            String?
+  message           String     @db.Text
+  status            LeadStatus @default(NEW)
+  createdAt         DateTime   @default(now())
+  updatedAt         DateTime   @updatedAt
+}
+
+// =======================
+// SEO Settings System
+// =======================
+model SeoSetting {
+  id          Int      @id @default(autoincrement())
+  pageName    String   @unique // e.g. "home", "about", "portfolio", "blog"
+  title       String
+  description String   @db.Text
+  keywords    String   @db.Text
+  ogImage     String?
+  updatedAt   DateTime @updatedAt
+}

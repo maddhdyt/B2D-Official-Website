@@ -1,5 +1,6 @@
 import { domAnimation, LazyMotion, m, MotionConfig } from "framer-motion";
-import { featuredArticles } from "../data/articles";
+import { useState, useEffect } from "react";
+import api from "../api/axios";
 
 const ease = [0.22, 1, 0.36, 1];
 
@@ -30,10 +31,8 @@ function ArrowIcon() {
 function ArticlePicture({ article }) {
   return (
     <picture>
-      <source srcSet={article.image.avif} type="image/avif" />
-      <source srcSet={article.image.webp} type="image/webp" />
       <img
-        src={article.image.webp}
+        src={article.featuredImage}
         alt=""
         width="1400"
         height="880"
@@ -57,7 +56,7 @@ function ArticleCard({ article, index }) {
       }}
       viewport={{ once: true, margin: "0px 0px -50px 0px" }}
     >
-      <a href={article.href} aria-label={`Read article: ${article.title}`}>
+      <a href={`/blog/${article.slug}`} aria-label={`Read article: ${article.title}`}>
         <div className="insights-article-media">
           <ArticlePicture article={article} />
           <div className="insights-article-overlay" aria-hidden="true" />
@@ -69,9 +68,9 @@ function ArticleCard({ article, index }) {
 
         <div className="insights-article-copy">
           <div className="insights-article-meta">
-            <span>{article.author}</span>
+            <span>{article.author?.name || "B2D Team"}</span>
             <span aria-hidden="true">/</span>
-            <span>{article.category}</span>
+            <span>{article.category?.name || "Uncategorized"}</span>
           </div>
           <h3>{article.title}</h3>
           <p>{article.excerpt}</p>
@@ -82,6 +81,29 @@ function ArticleCard({ article, index }) {
 }
 
 export default function InsightsSection() {
+  const [articles, setArticles] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      try {
+        const res = await api.get("/blogs?status=PUBLISHED");
+        if (res.data.success) {
+          setArticles(res.data.data.slice(0, 2)); // Show 2 featured articles
+        }
+      } catch (error) {
+        console.error("Failed to fetch blogs", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchBlogs();
+  }, []);
+
+  if (loading) {
+    return <div className="py-40 bg-[#07080A]"></div>;
+  }
+
   return (
     <LazyMotion features={domAnimation} strict>
       <MotionConfig reducedMotion="user">
@@ -114,7 +136,7 @@ export default function InsightsSection() {
             </m.header>
 
             <div className="insights-grid mt-14 md:mt-20">
-              {featuredArticles.map((article, index) => (
+              {articles.map((article, index) => (
                 <ArticleCard
                   key={article.id}
                   article={article}

@@ -57,7 +57,7 @@ export default function WebDesignDevelopment() {
         </EditorialGrid>
 
         {/* Section B (Moved up: Selected Works / Projects Successful) */}
-        <PortfolioCards />
+        <PortfolioCards categoryFilter="web" />
 
         {/* Section Why Us (Replaces WorkPhilosophy) */}
         <WhyUs />

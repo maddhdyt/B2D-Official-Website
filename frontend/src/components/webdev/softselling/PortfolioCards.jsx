@@ -1,59 +1,107 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import axios from "axios";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function PortfolioCards() {
+const hardcodedProjects = [
+  {
+    num: "01",
+    category: "COMPANY PROFILE — CUSTOM CODE",
+    title: "Katalog Digital",
+    desc: "Rebranding digital lengkap untuk perusahaan distribusi yang ingin menjangkau pasar B2B lebih luas.",
+    tags: ["Next.js", "TailwindCSS", "Framer Motion"],
+    year: "2024"
+  },
+  {
+    num: "02",
+    category: "WEDDING INVITATION — CUSTOM",
+    title: "Merayakan Cinta",
+    desc: "Undangan digital personal dengan 847 tamu yang mengkonfirmasi kehadiran secara online.",
+    tags: ["React", "Custom Animation", "RSVP Integration"],
+    year: "2024"
+  },
+  {
+    num: "03",
+    category: "LANDING PAGE — CAMPAIGN",
+    title: "Konversi Pertama",
+    desc: "Landing page kampanye yang menghasilkan 312 leads dalam 30 hari pertama.",
+    tags: ["Next.js", "A/B Optimized", "Mobile-first"],
+    year: "2025"
+  },
+  {
+    num: "04",
+    category: "CRM SYSTEM — CUSTOM",
+    title: "Pipeline yang Rapi",
+    desc: "Sistem CRM custom untuk tim sales 15 orang — menggantikan 6 spreadsheet berbeda.",
+    tags: ["Laravel", "React", "Pusher"],
+    year: "2025"
+  },
+  {
+    num: "05",
+    category: "ERP SYSTEM — ENTERPRISE",
+    title: "Satu Sistem, Terkendali",
+    desc: "Platform manajemen bisnis terintegrasi untuk operasional 3 cabang berskala nasional.",
+    tags: ["Laravel", "React", "Queue"],
+    year: "2025"
+  }
+];
+
+export default function PortfolioCards({ categoryFilter }) {
   const containerRef = useRef(null);
   const wrapperRef = useRef(null);
   const cardsRef = useRef([]);
-
-  const projects = [
-    {
-      num: "01",
-      category: "COMPANY PROFILE — CUSTOM CODE",
-      title: "Katalog Digital",
-      desc: "Rebranding digital lengkap untuk perusahaan distribusi yang ingin menjangkau pasar B2B lebih luas.",
-      tags: ["Next.js", "TailwindCSS", "Framer Motion"],
-      year: "2024"
-    },
-    {
-      num: "02",
-      category: "WEDDING INVITATION — CUSTOM",
-      title: "Merayakan Cinta",
-      desc: "Undangan digital personal dengan 847 tamu yang mengkonfirmasi kehadiran secara online.",
-      tags: ["React", "Custom Animation", "RSVP Integration"],
-      year: "2024"
-    },
-    {
-      num: "03",
-      category: "LANDING PAGE — CAMPAIGN",
-      title: "Konversi Pertama",
-      desc: "Landing page kampanye yang menghasilkan 312 leads dalam 30 hari pertama.",
-      tags: ["Next.js", "A/B Optimized", "Mobile-first"],
-      year: "2025"
-    },
-    {
-      num: "04",
-      category: "CRM SYSTEM — CUSTOM",
-      title: "Pipeline yang Rapi",
-      desc: "Sistem CRM custom untuk tim sales 15 orang — menggantikan 6 spreadsheet berbeda.",
-      tags: ["Laravel", "React", "Pusher"],
-      year: "2025"
-    },
-    {
-      num: "05",
-      category: "ERP SYSTEM — ENTERPRISE",
-      title: "Satu Sistem, Terkendali",
-      desc: "Platform manajemen bisnis terintegrasi untuk operasional 3 cabang berskala nasional.",
-      tags: ["Laravel", "React", "Queue"],
-      year: "2025"
-    }
-  ];
+  const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    // Fetch dynamic portfolio data from backend
+    axios.get("http://localhost:5000/api/v1/portfolios")
+      .then(res => {
+        if (res.data.success && res.data.data.length > 0) {
+          let rawData = res.data.data;
+          
+          if (categoryFilter) {
+            rawData = rawData.filter(p => {
+              const catName = p.category?.name?.toLowerCase() || "";
+              const catSlug = p.category?.slug?.toLowerCase() || "";
+              const filter = categoryFilter.toLowerCase();
+              return catName.includes(filter) || catSlug.includes(filter);
+            });
+          }
+
+          // Format API data to match GSAP structure
+          const formatted = rawData.map((p, idx) => ({
+            num: String(idx + 1).padStart(2, '0'),
+            category: p.category ? p.category.name.toUpperCase() : "UNCATEGORIZED",
+            title: p.title,
+            desc: p.shortDesc,
+            tags: p.techStack || [],
+            year: new Date(p.createdAt).getFullYear().toString(),
+            slug: p.slug
+          }));
+          setProjects(formatted);
+        } else {
+          setProjects(hardcodedProjects);
+        }
+      })
+      .catch(err => {
+        console.error("Failed to fetch portfolios, using fallback data", err);
+        setProjects(hardcodedProjects);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, []);
+
+  useEffect(() => {
+    if (loading || projects.length === 0) return;
+
+    // Pastikan referensi array sesuai dengan jumlah project
+    cardsRef.current = cardsRef.current.slice(0, projects.length);
+
     let ctx = gsap.context(() => {
       const cards = cardsRef.current;
       if (!cards.length) return;
@@ -66,28 +114,26 @@ export default function PortfolioCards() {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: wrapperRef.current, 
-          start: "top 15%", // Biarkan header kescroll ke atas terlebih dahulu
-          end: () => `+=${window.innerHeight * cards.length}`, // Gunakan window height agar durasi scroll pas dengan transisi
+          start: "top 15%", 
+          end: () => `+=${window.innerHeight * cards.length}`, 
           scrub: 1, 
-          pin: containerRef.current, // PIN KESELURUHAN SECTION, agar background biru gelap menutupi layar sepenuhnya dan tidak bocor ke section bawah
+          pin: containerRef.current, 
         }
       });
 
-      const stackGap = 30; // Jarak offset diturunkan agar lebih efisien dan tidak mendorong card terlalu jauh
+      const stackGap = 30; 
 
       cards.forEach((card, i) => {
         if (i === 0) return;
 
-        // Card baru masuk dan berhenti di posisi berjenjang ke bawah
         tl.to(card, {
           y: i * stackGap, 
           ease: "power2.out",
         }, i);
 
-        // Card di belakangnya mengecil, menggelap, posisinya tetap di tempat semula
         for (let j = 0; j < i; j++) {
           tl.to(cards[j], {
-            scale: 1 - ((i - j) * 0.04), // Mengecil perlahan
+            scale: 1 - ((i - j) * 0.04), 
             filter: `brightness(${1 - ((i - j) * 0.2)})`, 
             ease: "power2.out",
           }, i);
@@ -95,8 +141,15 @@ export default function PortfolioCards() {
       });
     }, containerRef);
 
+    // Refresh ScrollTrigger setelah komponen me-render data dinamis
+    setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 500);
+
     return () => ctx.revert();
-  }, []);
+  }, [projects, loading]);
+
+  if (loading) return <div className="min-h-screen bg-[#050A18]"></div>;
 
   return (
     <div ref={containerRef} className="relative w-full min-h-screen bg-[#050A18] overflow-hidden flex flex-col items-center border-t border-white/10 pt-12 md:pt-20 pb-[30vh]">
@@ -120,7 +173,7 @@ export default function PortfolioCards() {
       <div 
         ref={wrapperRef}
         className="grid w-full max-w-5xl mx-auto z-20 px-4 md:px-0 relative"
-        style={{ paddingBottom: `${(projects.length - 1) * 30}px` }} // Ruang tambahan agar card terakhir tidak terpotong stackGap
+        style={{ paddingBottom: `${(projects.length - 1) * 30}px` }} 
       >
         {projects.map((project, idx) => (
           <div 
@@ -128,7 +181,7 @@ export default function PortfolioCards() {
             ref={el => cardsRef.current[idx] = el}
             className="w-full rounded-2xl overflow-hidden flex flex-col justify-end p-8 md:p-12 border border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.8)] will-change-transform bg-[#0A1128] relative"
             style={{ 
-              gridArea: "1 / 1", // Tumpuk semua card di satu sel grid yang sama
+              gridArea: "1 / 1", 
               zIndex: idx 
             }}
           >

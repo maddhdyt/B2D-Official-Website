@@ -1,5 +1,6 @@
 import { m } from "framer-motion";
-import { portfolioProjects } from "../../data/portfolioProjects";
+import { useState, useEffect } from "react";
+import api from "../../api/axios";
 import PortfolioPicture from "./PortfolioPicture";
 
 const ease = [0.22, 1, 0.36, 1];
@@ -35,7 +36,32 @@ const cardVariants = {
 };
 
 export default function ResultsShowcaseSection() {
-  const projects = portfolioProjects.slice(0, 3); // Get first 3 projects
+  const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchPortfolios = async () => {
+      try {
+        const res = await api.get("/portfolios?isFeatured=true");
+        if (res.data.success) {
+          // Fallback array formatting if needed, though API returns correctly mapped data
+          setProjects(res.data.data.slice(0, 3));
+        }
+      } catch (error) {
+        console.error("Failed to fetch portfolios", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchPortfolios();
+  }, []);
+
+  if (loading) {
+    return <div className="py-40 bg-gradient-to-b from-[#07080A] to-[#070B0D]"></div>;
+  }
+
+  // Ensure there are enough projects to avoid errors (fallback to empty render if less than 3)
+  if (projects.length < 3) return null;
 
   return (
     <m.section
@@ -78,7 +104,7 @@ export default function ResultsShowcaseSection() {
           <m.div variants={cardVariants} className="w-[35%] md:w-[28%] relative z-10 translate-y-12 md:translate-y-24 -ml-4 md:ml-0 group cursor-pointer">
             <div className="w-full aspect-[3/4] rounded-xl md:rounded-2xl overflow-hidden shadow-2xl border border-white/5">
               <PortfolioPicture
-                image={projects[0].image}
+                image={projects[0].coverImage}
                 title={projects[0].title}
                 className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-110"
               />
@@ -93,7 +119,7 @@ export default function ResultsShowcaseSection() {
           <m.div variants={cardVariants} className="w-[45%] md:w-[35%] relative z-20 -ml-6 md:-ml-12 mb-6 md:mb-12 group cursor-pointer">
             <div className="w-full aspect-[4/5] rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl border border-white/5">
               <PortfolioPicture
-                image={projects[1].image}
+                image={projects[1].coverImage}
                 title={projects[1].title}
                 className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-110"
               />
@@ -108,7 +134,7 @@ export default function ResultsShowcaseSection() {
           <m.div variants={cardVariants} className="w-[50%] md:w-[45%] relative z-30 -ml-12 md:-ml-16 group cursor-pointer">
             <div className="w-full aspect-[3/4] rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden shadow-2xl border border-white/10">
               <PortfolioPicture
-                image={projects[2].image}
+                image={projects[2].coverImage}
                 title={projects[2].title}
                 className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-110"
               />

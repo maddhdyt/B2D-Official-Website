@@ -1,7 +1,33 @@
+import { useState } from "react";
 import { X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import axios from "axios";
 
 export default function ContactDrawer({ isOpen, onClose }) {
+  const [formData, setFormData] = useState({ name: '', email: '', company: '', budget: '', message: '' });
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+
+  const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      await axios.post("http://localhost:5000/api/v1/leads", formData);
+      setSuccess(true);
+      setTimeout(() => {
+        setSuccess(false);
+        setFormData({ name: '', email: '', company: '', budget: '', message: '' });
+        onClose();
+      }, 2000);
+    } catch (error) {
+      console.error("Failed to submit form", error);
+      alert("Failed to submit form. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
   return (
     <AnimatePresence>
       {isOpen && (
@@ -42,11 +68,21 @@ export default function ContactDrawer({ isOpen, onClose }) {
             </div>
 
             <div className="flex-1 overflow-y-auto p-6">
-              <p className="text-sm font-medium mb-8 text-white/90">
-                Get your free marketing plan.
-              </p>
+              {success ? (
+                <div className="flex flex-col items-center justify-center h-full text-center">
+                  <div className="w-16 h-16 bg-white text-[#00A8FF] rounded-full flex items-center justify-center mb-4">
+                    <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                  </div>
+                  <h3 className="text-2xl font-bold font-unbounded">Thank You!</h3>
+                  <p className="mt-2 text-white/80">We have received your message and will contact you shortly.</p>
+                </div>
+              ) : (
+                <>
+                  <p className="text-sm font-medium mb-8 text-white/90">
+                    Get your free marketing plan.
+                  </p>
 
-              <form className="flex flex-col gap-5">
+                  <form onSubmit={handleSubmit} className="flex flex-col gap-5">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium mb-2">
                     Name
@@ -55,6 +91,8 @@ export default function ContactDrawer({ isOpen, onClose }) {
                     type="text"
                     id="name"
                     name="name"
+                    value={formData.name}
+                    onChange={handleChange}
                     className="w-full bg-white/10 border-none border-b-2 border-white/30 focus:border-white focus:ring-0 px-4 py-3 text-white placeholder-white/50 rounded-lg outline-none transition-all"
                     placeholder="John Doe"
                     autoComplete="name"
@@ -70,6 +108,8 @@ export default function ContactDrawer({ isOpen, onClose }) {
                     type="email"
                     id="email"
                     name="email"
+                    value={formData.email}
+                    onChange={handleChange}
                     className="w-full bg-white/10 border-none border-b-2 border-white/30 focus:border-white focus:ring-0 px-4 py-3 text-white placeholder-white/50 rounded-lg outline-none transition-all"
                     placeholder="john@example.com"
                     autoComplete="email"
@@ -85,6 +125,8 @@ export default function ContactDrawer({ isOpen, onClose }) {
                     type="text"
                     id="company"
                     name="company"
+                    value={formData.company}
+                    onChange={handleChange}
                     className="w-full bg-white/10 border-none border-b-2 border-white/30 focus:border-white focus:ring-0 px-4 py-3 text-white placeholder-white/50 rounded-lg outline-none transition-all"
                     placeholder="Your Company"
                     autoComplete="organization"
@@ -98,6 +140,8 @@ export default function ContactDrawer({ isOpen, onClose }) {
                   <select
                     id="budget"
                     name="budget"
+                    value={formData.budget}
+                    onChange={handleChange}
                     className="w-full bg-[#00A8FF] border-b-2 border-white/30 focus:border-white focus:ring-0 px-4 py-3 text-white rounded-lg outline-none transition-all appearance-none cursor-pointer"
                     style={{ backgroundColor: "rgba(255, 255, 255, 0.1)" }}
                   >
@@ -109,18 +153,39 @@ export default function ContactDrawer({ isOpen, onClose }) {
                   </select>
                 </div>
 
+                <div>
+                  <label htmlFor="message" className="block text-sm font-medium mb-2">
+                    Message
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows="3"
+                    value={formData.message}
+                    onChange={handleChange}
+                    className="w-full bg-white/10 border-none border-b-2 border-white/30 focus:border-white focus:ring-0 px-4 py-3 text-white placeholder-white/50 rounded-lg outline-none transition-all resize-none"
+                    placeholder="Tell us about your project..."
+                    required
+                  ></textarea>
+                </div>
+
                 <div className="mt-6">
                   <button
                     type="submit"
-                    className="w-full rounded-full border border-white bg-transparent py-4 font-unbounded text-sm font-semibold uppercase tracking-wider text-white hover:bg-white hover:text-[#00A8FF] transition-colors flex items-center justify-center gap-2 group"
+                    disabled={loading}
+                    className="w-full rounded-full border border-white bg-transparent py-4 font-unbounded text-sm font-semibold uppercase tracking-wider text-white hover:bg-white hover:text-[#00A8FF] transition-colors flex items-center justify-center gap-2 group disabled:opacity-50"
                   >
-                    Submit 
-                    <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                    </svg>
+                    {loading ? "Submitting..." : "Submit"} 
+                    {!loading && (
+                      <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                      </svg>
+                    )}
                   </button>
                 </div>
               </form>
+            </>
+            )}
             </div>
           </motion.div>
         </>
