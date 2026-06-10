@@ -195,29 +195,29 @@ const DigitalAdvertising = () => {
             {/* Line 1 */}
             <div className="flex flex-col md:flex-row justify-between items-start md:items-end border-b border-white/10 pb-2 mb-2 relative z-10">
               <div className="overflow-hidden">
-                <h1 className="hero-text-line font-unbounded text-5xl md:text-[6rem] lg:text-[8.5rem] leading-[0.85] font-black uppercase tracking-tighter mix-blend-difference text-white">
+                <h1 className="hero-text-line font-unbounded text-[11vw] md:text-[7vw] lg:text-[6vw] xl:text-[7rem] leading-[0.9] font-black uppercase tracking-tighter mix-blend-difference text-white">
                   TURN ATTENTION:
                 </h1>
               </div>
               <div className="overflow-hidden mt-4 md:mt-0">
-                <div className="hero-markup font-playfair italic text-[#69DEA0] text-4xl md:text-5xl lg:text-7xl font-bold transform -rotate-6 md:-translate-y-4 pr-8 drop-shadow-[0_0_15px_rgba(105,222,160,0.3)]">
+                <div className="hero-markup font-playfair italic text-[#69DEA0] text-3xl md:text-[4vw] lg:text-[4.5rem] font-bold transform -rotate-6 md:-translate-y-4 pr-8 drop-shadow-[0_0_15px_rgba(105,222,160,0.3)]">
                   SCALING SOON
                 </div>
               </div>
             </div>
             
             {/* Line 2 */}
-            <div className="flex flex-wrap md:flex-nowrap justify-start items-center gap-4 md:gap-8 border-b border-white/10 pb-2 mb-2 relative z-10">
-              <div className="w-12 h-12 md:w-20 md:h-20 rounded-full border border-white/30 flex items-center justify-center shrink-0">
-                <span className="font-unbounded text-xl md:text-4xl text-white">©</span>
+            <div className="flex flex-wrap md:flex-nowrap justify-start items-center gap-3 md:gap-6 border-b border-white/10 pb-2 mb-2 relative z-10">
+              <div className="w-10 h-10 md:w-16 md:h-16 rounded-full border border-white/30 flex items-center justify-center shrink-0">
+                <span className="font-unbounded text-lg md:text-3xl text-white">©</span>
               </div>
               <div className="overflow-hidden">
-                <h1 className="hero-text-line font-unbounded text-4xl md:text-[6rem] lg:text-[8.5rem] leading-[0.85] font-black uppercase tracking-tighter text-white">
+                <h1 className="hero-text-line font-unbounded text-[8.5vw] md:text-[6vw] lg:text-[5.5vw] xl:text-[6.5rem] leading-[0.9] font-black uppercase tracking-tighter text-white">
                   FROM <span className="font-playfair italic font-light normal-case tracking-normal text-[#FC8319]">(CLICKS)</span> TO
                 </h1>
               </div>
               <div className="hidden lg:block ml-auto overflow-visible">
-                 <div className="hero-markup font-playfair italic text-[#69DEA0] text-3xl md:text-5xl lg:text-7xl font-bold transform -rotate-3 opacity-90 pr-4">
+                 <div className="hero-markup font-playfair italic text-[#69DEA0] text-3xl md:text-[4vw] lg:text-[4.5rem] font-bold transform -rotate-3 opacity-90 pr-4">
                    $$$
                  </div>
               </div>
@@ -226,7 +226,7 @@ const DigitalAdvertising = () => {
             {/* Line 3 */}
             <div className="flex justify-end border-b border-white/10 pb-2 relative z-10">
                <div className="overflow-hidden">
-                 <h1 className="hero-text-line font-unbounded text-5xl md:text-[6rem] lg:text-[8.5rem] leading-[0.85] font-black uppercase tracking-tighter text-white">
+                 <h1 className="hero-text-line font-unbounded text-[11vw] md:text-[7vw] lg:text-[6.5vw] xl:text-[8rem] leading-[0.9] font-black uppercase tracking-tighter text-white">
                   REAL REVENUE
                 </h1>
                </div>
@@ -261,11 +261,11 @@ const DigitalAdvertising = () => {
               return (
                 <div 
                   key={index} 
-                  className={`service-card group relative p-8 md:p-10 rounded-xl border ${service.border} ${service.bg} ${service.colSpan} overflow-hidden transition-all duration-500 hover:-translate-y-2`}
+                  className={`service-card group relative p-6 lg:p-8 rounded-xl border ${service.border} ${service.bg} ${service.colSpan} overflow-hidden transition-all duration-500 hover:-translate-y-2`}
                 >
                   <div className={`absolute inset-0 bg-gradient-to-br ${hoverGlow} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
                   
-                  <div className="relative z-10 flex flex-col h-full justify-between gap-12">
+                  <div className="relative z-10 flex flex-col h-full justify-between gap-8 lg:gap-12">
                     <div className="flex justify-between items-start">
                       <div className={`p-3 bg-white/5 rounded-lg border border-white/5 ${iconHover} transition-colors duration-500`}>
                         {service.icon}
@@ -276,10 +276,10 @@ const DigitalAdvertising = () => {
                     </div>
                     
                     <div>
-                      <h4 className="font-unbounded text-2xl md:text-3xl font-bold uppercase mb-4 text-white group-hover:text-white transition-colors">
+                      <h4 className="font-unbounded text-xl lg:text-2xl 2xl:text-3xl leading-tight font-bold uppercase mb-3 lg:mb-4 text-white group-hover:text-white transition-colors pr-2">
                         {service.title}
                       </h4>
-                      <p className="font-sans text-white/50 text-sm md:text-base leading-relaxed">
+                      <p className="font-sans text-white/50 text-sm lg:text-base leading-relaxed">
                         {service.description}
                       </p>
                     </div>
@@ -300,12 +300,12 @@ const DigitalAdvertising = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-24 items-center mb-32">
             <div className="md:col-span-5 relative z-10 order-2 md:order-1">
-              <h2 className="font-playfair text-4xl md:text-6xl italic leading-tight mb-8">
+              <h2 className="font-playfair text-3xl md:text-4xl lg:text-5xl italic leading-tight mb-6 lg:mb-8">
                 Data is the foundation. <br/>
-                <span className="font-unbounded not-italic uppercase font-black text-transparent bg-clip-text bg-gradient-to-r from-white to-white/40 text-5xl md:text-7xl block mt-2">
+                <span className="font-unbounded not-italic uppercase font-black text-transparent bg-clip-text bg-gradient-to-r from-white to-white/40 text-4xl md:text-5xl lg:text-6xl xl:text-[5rem] block mt-2">
                   Strategy
                 </span>
-                <span className="font-unbounded not-italic uppercase font-black text-[#FC8319] text-5xl md:text-7xl block -mt-2 drop-shadow-[0_0_15px_rgba(252,131,25,0.2)]">
+                <span className="font-unbounded not-italic uppercase font-black text-[#FC8319] text-4xl md:text-5xl lg:text-6xl xl:text-[5rem] block -mt-1 lg:-mt-2 drop-shadow-[0_0_15px_rgba(252,131,25,0.2)]">
                   Is The Catalyst.
                 </span>
               </h2>

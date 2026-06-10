@@ -7,6 +7,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function PortfolioCards() {
   const containerRef = useRef(null);
+  const wrapperRef = useRef(null);
   const cardsRef = useRef([]);
 
   const projects = [
@@ -64,11 +65,11 @@ export default function PortfolioCards() {
       // Create a pinned timeline
       const tl = gsap.timeline({
         scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top top", // Pin at the top of the viewport
-          end: `+=${cards.length * 100}%`, // Scroll distance
-          scrub: 1, // Smooth scrub
-          pin: true, // Pin the container
+          trigger: wrapperRef.current, 
+          start: "top 15%", // Biarkan header kescroll ke atas terlebih dahulu
+          end: () => `+=${window.innerHeight * cards.length}`, // Gunakan window height agar durasi scroll pas dengan transisi
+          scrub: 1, 
+          pin: containerRef.current, // PIN KESELURUHAN SECTION, agar background biru gelap menutupi layar sepenuhnya dan tidak bocor ke section bawah
         }
       });
 
@@ -98,7 +99,7 @@ export default function PortfolioCards() {
   }, []);
 
   return (
-    <div ref={containerRef} className="relative w-full min-h-screen bg-[#050A18] overflow-hidden flex flex-col items-center border-t border-white/10 pt-12 md:pt-20 pb-24">
+    <div ref={containerRef} className="relative w-full min-h-screen bg-[#050A18] overflow-hidden flex flex-col items-center border-t border-white/10 pt-12 md:pt-20 pb-[30vh]">
       
       {/* Background Grid Lines */}
       <div className="absolute inset-0 z-0 border-x border-white/10 max-w-[1440px] mx-auto w-[calc(100%-2rem)] md:w-[calc(100%-4rem)] pointer-events-none" />
@@ -117,6 +118,7 @@ export default function PortfolioCards() {
 
       {/* Dynamic Height Cards Wrapper using CSS Grid */}
       <div 
+        ref={wrapperRef}
         className="grid w-full max-w-5xl mx-auto z-20 px-4 md:px-0 relative"
         style={{ paddingBottom: `${(projects.length - 1) * 30}px` }} // Ruang tambahan agar card terakhir tidak terpotong stackGap
       >
