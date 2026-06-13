@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, Megaphone, PenTool, Code2 } from "lucide-react";
+import { ChevronDown, Megaphone, PenTool, Code2, Scale } from "lucide-react";
 
 const servicesList = [
   { title: "Digital Advertising", icon: Megaphone, href: "/service/digital-advertising" },
   { title: "Content & Creative", icon: PenTool, href: "/service/content-creative" },
   { title: "Web Design & Development", icon: Code2, href: "/service/web-design-development" },
+  { title: "Legalitas & Perizinan", icon: Scale, href: "/service/legalitas" },
 ];
 
 export default function MobileAccordion({ closeMenu }) {

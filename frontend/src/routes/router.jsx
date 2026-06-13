@@ -43,6 +43,10 @@ export const router = createBrowserRouter([
         lazy: () => import("../pages/ContentCreative").then(m => ({ Component: m.default })),
       },
       {
+        path: "/service/legalitas",
+        lazy: () => import("../pages/Legalitas").then(m => ({ Component: m.default })),
+      },
+      {
         path: "*",
         lazy: () => import("../pages/NotFoundPage"),
       },

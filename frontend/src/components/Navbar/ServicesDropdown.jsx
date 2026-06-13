@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Megaphone, PenTool, Code2 } from "lucide-react";
+import { Megaphone, PenTool, Code2, Scale } from "lucide-react";
 
 const servicesList = [
   {
@@ -19,6 +19,12 @@ const servicesList = [
     description: "Pengembangan website modern, cepat, dan berorientasi pada konversi.",
     icon: Code2,
     href: "/service/web-design-development",
+  },
+  {
+    title: "Legalitas & Perizinan",
+    description: "Layanan perlindungan identitas bisnis, pendaftaran merek, dan legalitas usaha.",
+    icon: Scale,
+    href: "/service/legalitas",
   },
 ];
 
