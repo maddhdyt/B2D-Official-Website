@@ -23,4 +23,10 @@ export const coreServices = [
     description:
       "Website cepat dan conversion-focused yang dirancang untuk memperkuat kredibilitas bisnis.",
   },
+  {
+    number: "05",
+    title: "Legalitas & Perizinan",
+    description:
+      "Layanan pengurusan dokumen legal dan izin usaha yang cepat, transparan, dan terpercaya untuk menjamin kepatuhan bisnis Anda secara hukum.",
+  },
 ];

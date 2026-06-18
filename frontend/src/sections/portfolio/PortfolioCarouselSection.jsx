@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { portfolioProjects } from "../../data/portfolioProjects";
@@ -125,11 +126,11 @@ export default function PortfolioCarouselSection() {
               className={`floating-card absolute ${config.width}`}
               style={{ top: config.top, left: config.left }}
             >
-              <div className="card-inner w-full aspect-[4/5] rounded-xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/5 relative group cursor-pointer bg-[#0A0A0A]">
+              <Link to={`/portfolio/${project.id}`} className="card-inner w-full block rounded-xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/5 relative group cursor-pointer bg-[#0A0A0A]">
                 <PortfolioPicture
                   image={project.image}
                   title={project.title}
-                  className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-110 opacity-70 group-hover:opacity-30"
+                  className="w-full h-auto object-cover transition-transform duration-1000 group-hover:scale-110 opacity-70 group-hover:opacity-30 block"
                 />
                 
                 {/* Subtle internal glow on hover */}
@@ -140,7 +141,7 @@ export default function PortfolioCarouselSection() {
                   <p className="font-unbounded text-xs md:text-sm font-bold mb-1 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">{project.title}</p>
                   <p className="font-sans text-[8px] md:text-[10px] uppercase tracking-widest text-[#00D4FF] translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75">{project.category}</p>
                 </div>
-              </div>
+              </Link>
             </div>
           );
         })}

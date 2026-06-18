@@ -3,6 +3,10 @@ import Footer from '../components/Footer';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Target, TrendingUp, Users, Filter, MousePointerClick, ArrowUpRight } from 'lucide-react';
+import mockup1 from '../assets/digital-advertising/Testimoni Meta Ads-1.png';
+import mockup2 from '../assets/digital-advertising/Testimoni Google Ads-1.png';
+import mockup3 from '../assets/digital-advertising/Testimoni Meta Ads-2.png';
+import mockup4 from '../assets/digital-advertising/Testimoni Google Ads-2.png';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -10,7 +14,12 @@ const services = [
   {
     title: 'Meta & Google Ads',
     description: 'Precision targeting across the world\'s largest ecosystems. We dominate search intent and interrupt social feeds with highly converted creative.',
-    icon: <Target className="text-[#FC8319]" size={28} />,
+    icon: (
+      <div className="flex items-center gap-3">
+        <img src="https://thesvg.org/icons/meta/default.svg" alt="Meta" className="w-[28px] h-[28px]" />
+        <img src="https://thesvg.org/icons/google-ads/default.svg" alt="Google Ads" className="w-[28px] h-[28px]" />
+      </div>
+    ),
     colSpan: 'md:col-span-8',
     bg: 'bg-gradient-to-br from-[#050A18] to-[#0A1428]',
     border: 'border-white/5 hover:border-[#FC8319]/50'
@@ -18,7 +27,7 @@ const services = [
   {
     title: 'TikTok Ads',
     description: 'Native, engaging, and algorithmic. We engineer content that stops the scroll and drives impulse conversions.',
-    icon: <TrendingUp className="text-[#FC8319]" size={28} />,
+    icon: <img src="https://thesvg.org/icons/tiktok/default.svg" alt="TikTok" className="w-[28px] h-[28px]" />,
     colSpan: 'md:col-span-4',
     bg: 'bg-[#050A18]',
     border: 'border-white/5 hover:border-[#FC8319]/50'
@@ -160,7 +169,7 @@ const DigitalAdvertising = () => {
              </p>
              <div className="w-full flex-1 overflow-hidden mb-6 relative border border-black/10">
                <div className="absolute inset-0 bg-[#FC8319] mix-blend-multiply pointer-events-none z-10"></div>
-               <img src="/assets/editorial/da_dashboard_macro.png" className="w-full h-full object-cover grayscale contrast-125" alt="Dashboard" />
+               <img src={mockup1} className="w-full h-full object-cover" alt="Dashboard" />
              </div>
              <a href="#services" className="w-full bg-black text-white py-3 font-unbounded text-xs font-bold uppercase text-center hover:bg-black/90 transition-colors flex items-center justify-between px-4">
                <span>INITIATE CAMPAIGN</span>
@@ -322,9 +331,9 @@ const DigitalAdvertising = () => {
               <div className="showcase-image w-full aspect-[4/3] rounded-2xl overflow-hidden border border-white/5 relative shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
                 <div className="absolute inset-0 bg-[#FC8319]/10 mix-blend-overlay z-10 pointer-events-none"></div>
                 <img 
-                  src="/assets/editorial/da_holographic_data.png" 
+                  src={mockup2} 
                   alt="Holographic Data Ecosystem" 
-                  className="w-full h-[120%] object-cover origin-top filter contrast-125"
+                  className="w-full h-full object-cover origin-top"
                 />
               </div>
             </div>
@@ -335,9 +344,9 @@ const DigitalAdvertising = () => {
                <div className="showcase-image w-full aspect-video rounded-2xl overflow-hidden border border-white/5 relative">
                 <div className="absolute inset-0 bg-gradient-to-t from-[#050A18] via-transparent to-transparent z-10 pointer-events-none"></div>
                 <img 
-                  src="/assets/editorial/da_funnel_3d.png" 
+                  src={mockup3} 
                   alt="Conversion Funnel 3D" 
-                  className="w-full h-[120%] object-cover origin-top"
+                  className="w-full h-full object-cover origin-top"
                 />
               </div>
             </div>
@@ -345,9 +354,9 @@ const DigitalAdvertising = () => {
                <div className="showcase-image w-full h-full min-h-[300px] rounded-2xl overflow-hidden border border-white/5 relative">
                 <div className="absolute inset-0 bg-[#69DEA0]/5 mix-blend-overlay z-10 pointer-events-none"></div>
                 <img 
-                  src="/assets/editorial/da_dashboard_macro.png" 
+                  src={mockup4} 
                   alt="Analytics Dashboard Macro" 
-                  className="w-full h-[120%] object-cover origin-top grayscale contrast-125"
+                  className="w-full h-full object-cover origin-top"
                 />
               </div>
             </div>

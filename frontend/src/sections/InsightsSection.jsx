@@ -2,6 +2,11 @@ import { domAnimation, LazyMotion, m, MotionConfig } from "framer-motion";
 import { useState, useEffect } from "react";
 import api from "../api/axios";
 
+import mockupAds1 from "../assets/digital-advertising/Testimoni Meta Ads-3.png";
+import mockupAds2 from "../assets/digital-advertising/Testimoni Meta Ads-4.png";
+
+const mockupImages = [mockupAds1, mockupAds2];
+
 const ease = [0.22, 1, 0.36, 1];
 
 const fadeUp = {
@@ -28,11 +33,12 @@ function ArrowIcon() {
   );
 }
 
-function ArticlePicture({ article }) {
+function ArticlePicture({ article, index }) {
+  const imageSrc = mockupImages[index % mockupImages.length];
   return (
     <picture>
       <img
-        src={article.featuredImage}
+        src={imageSrc || article.featuredImage}
         alt=""
         width="1400"
         height="880"
@@ -58,7 +64,7 @@ function ArticleCard({ article, index }) {
     >
       <a href={`/blog/${article.slug}`} aria-label={`Read article: ${article.title}`}>
         <div className="insights-article-media">
-          <ArticlePicture article={article} />
+          <ArticlePicture article={article} index={index} />
           <div className="insights-article-overlay" aria-hidden="true" />
           <span className="insights-read-action">
             Read Article

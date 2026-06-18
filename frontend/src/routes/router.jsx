@@ -15,6 +15,10 @@ export const router = createBrowserRouter([
     element: <RoutedSiteLayout />,
     children: [
       {
+        path: "/",
+        lazy: () => import("../pages/HomePage").then(m => ({ Component: m.default })),
+      },
+      {
         path: "/blog",
         lazy: () => import("../pages/BlogListing").then(m => ({ Component: m.default })),
       },
@@ -25,6 +29,10 @@ export const router = createBrowserRouter([
       {
         path: "/portfolio",
         lazy: () => import("../pages/Portfolio").then(m => ({ Component: m.default })),
+      },
+      {
+        path: "/portfolio/:slug",
+        lazy: () => import("../pages/PortfolioDetail").then(m => ({ Component: m.default })),
       },
       {
         path: "/about",

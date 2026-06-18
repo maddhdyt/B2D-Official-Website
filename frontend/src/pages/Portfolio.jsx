@@ -1,8 +1,25 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Footer from '../components/Footer';
 import api from '../api/axios';
+
+import web1 from '../assets/web-design-development/Testimoni Web Company Profile-1.png';
+import web2 from '../assets/web-design-development/Testimoni Web Merayakan Takdir.png';
+import web3 from '../assets/web-design-development/Testimoni Web E-absensi.png';
+import creative1 from '../assets/creative-service/Creative Service-1.png';
+import creative2 from '../assets/creative-service/Creative Service-2.png';
+import creative3 from '../assets/creative-service/Creative Service-3.png';
+import ads1 from '../assets/digital-advertising/Testimoni Meta Ads-1.png';
+import ads2 from '../assets/digital-advertising/Testimoni Google Ads-1.png';
+import ads3 from '../assets/digital-advertising/Testimoni Meta Ads-2.png';
+
+const mockupImages = [
+  web1, creative1, ads1,
+  web2, creative2, ads2,
+  web3, creative3, ads3
+];
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -36,11 +53,13 @@ export default function Portfolio() {
     if (portfolios.length === 0) return;
     const cards = [];
     for (let i = 0; i < 20; i++) {
-      const project = portfolios[i % portfolios.length];
+      const project = portfolios[i % portfolios.length] || {};
+      const image = mockupImages[i % mockupImages.length];
       const isForeground = Math.random() > 0.5;
       cards.push({
         id: `float-${i}`,
         project,
+        image,
         top: Math.random() > 0.5 ? `${Math.random() * 30}%` : `${70 + Math.random() * 30}%`,
         left: Math.random() > 0.5 ? `${Math.random() * 30}%` : `${70 + Math.random() * 30}%`,
         scale: isForeground ? 0.8 + Math.random() * 0.7 : 0.3 + Math.random() * 0.4,
@@ -195,11 +214,13 @@ export default function Portfolio() {
                 }}
               >
                 <div className="absolute inset-0 bg-[#00D4FF]/10 mix-blend-overlay z-10" />
-                <img 
-                  src={card.project.coverImage} 
-                  alt="" 
-                  className="w-full h-full object-cover filter contrast-125 saturate-50"
-                />
+                <Link to={`/portfolio/${card.project.slug}`}>
+                  <img 
+                    src={card.image} 
+                    alt="" 
+                    className="w-full h-full object-cover filter contrast-125 saturate-50 hover:saturate-100 hover:contrast-100 transition-all duration-500"
+                  />
+                </Link>
               </div>
             ))}
           </div>
@@ -238,14 +259,14 @@ export default function Portfolio() {
                 <div key={project.id} className="project-row grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 group">
                   
                   {/* Left: Project Image */}
-                  <div className="lg:col-span-8 overflow-hidden rounded-sm relative cursor-pointer">
+                  <Link to={`/portfolio/${project.slug}`} className="lg:col-span-8 overflow-hidden rounded-sm relative cursor-pointer block">
                     <div className="absolute inset-0 bg-[#00D4FF]/0 group-hover:bg-[#00D4FF]/10 transition-colors duration-500 z-10 pointer-events-none" />
                     <img 
-                      src={project.coverImage} 
+                      src={mockupImages[idx % mockupImages.length]} 
                       alt={project.title}
                       className="w-full h-full object-cover aspect-[16/9] transform group-hover:scale-105 transition-transform duration-1000 ease-[0.25,1,0.5,1]"
                     />
-                  </div>
+                  </Link>
 
                   {/* Right: Editorial Data */}
                   <div className="lg:col-span-4 flex flex-col justify-center">
@@ -270,15 +291,15 @@ export default function Portfolio() {
                       </div>
                     </div>
 
-                    <a 
-                      href="#case-study" 
+                    <Link 
+                      to={`/portfolio/${project.slug}`} 
                       className="w-fit flex items-center gap-4 border-b border-white pb-2 hover:text-[#00D4FF] hover:border-[#00D4FF] transition-colors"
                     >
                       <span className="font-unbounded text-sm uppercase tracking-wider">View Case Study</span>
                       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                         <path d="M5 12h14M12 5l7 7-7 7"/>
                       </svg>
-                    </a>
+                    </Link>
                   </div>
 
                 </div>

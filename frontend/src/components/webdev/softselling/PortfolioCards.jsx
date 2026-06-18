@@ -4,6 +4,12 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import axios from "axios";
 
+import mockupWeb1 from "../../../assets/web-design-development/Testimoni Web Company Profile-1.png";
+import mockupWeb2 from "../../../assets/web-design-development/Testimoni Web Merayakan Takdir.png";
+import mockupWeb3 from "../../../assets/web-design-development/Testimoni Web-1.png";
+import mockupWeb4 from "../../../assets/web-design-development/Testimoni Web-2.png";
+import mockupWeb5 from "../../../assets/web-design-development/Testimoni Web E-absensi.png";
+
 gsap.registerPlugin(ScrollTrigger);
 
 const hardcodedProjects = [
@@ -13,7 +19,8 @@ const hardcodedProjects = [
     title: "Katalog Digital",
     desc: "Rebranding digital lengkap untuk perusahaan distribusi yang ingin menjangkau pasar B2B lebih luas.",
     tags: ["Next.js", "TailwindCSS", "Framer Motion"],
-    year: "2024"
+    year: "2024",
+    image: mockupWeb1
   },
   {
     num: "02",
@@ -21,7 +28,8 @@ const hardcodedProjects = [
     title: "Merayakan Cinta",
     desc: "Undangan digital personal dengan 847 tamu yang mengkonfirmasi kehadiran secara online.",
     tags: ["React", "Custom Animation", "RSVP Integration"],
-    year: "2024"
+    year: "2024",
+    image: mockupWeb2
   },
   {
     num: "03",
@@ -29,7 +37,8 @@ const hardcodedProjects = [
     title: "Konversi Pertama",
     desc: "Landing page kampanye yang menghasilkan 312 leads dalam 30 hari pertama.",
     tags: ["Next.js", "A/B Optimized", "Mobile-first"],
-    year: "2025"
+    year: "2025",
+    image: mockupWeb3
   },
   {
     num: "04",
@@ -37,7 +46,8 @@ const hardcodedProjects = [
     title: "Pipeline yang Rapi",
     desc: "Sistem CRM custom untuk tim sales 15 orang — menggantikan 6 spreadsheet berbeda.",
     tags: ["Laravel", "React", "Pusher"],
-    year: "2025"
+    year: "2025",
+    image: mockupWeb4
   },
   {
     num: "05",
@@ -45,7 +55,8 @@ const hardcodedProjects = [
     title: "Satu Sistem, Terkendali",
     desc: "Platform manajemen bisnis terintegrasi untuk operasional 3 cabang berskala nasional.",
     tags: ["Laravel", "React", "Queue"],
-    year: "2025"
+    year: "2025",
+    image: mockupWeb5
   }
 ];
 
@@ -185,9 +196,13 @@ export default function PortfolioCards({ categoryFilter }) {
               zIndex: idx 
             }}
           >
-            {/* Background Graphic Placeholder */}
+            {/* Background Graphic or Mockup */}
             <div className="absolute inset-0 bg-gradient-to-br from-[#0B143A] to-[#050A18] z-0">
-               <div className="absolute inset-0 opacity-40" style={{ backgroundImage: `radial-gradient(circle at 50% 0%, #3B82F6 0%, transparent 70%)` }}></div>
+               {project.image || project.coverImage ? (
+                 <img src={project.image || project.coverImage} alt={project.title} className="w-full h-full object-cover opacity-60" />
+               ) : (
+                 <div className="absolute inset-0 opacity-40" style={{ backgroundImage: `radial-gradient(circle at 50% 0%, #3B82F6 0%, transparent 70%)` }}></div>
+               )}
                
                {/* Massive Numbers */}
                <span className="absolute -top-4 -right-4 md:top-8 md:right-8 text-white/[0.03] font-['Unbounded'] font-black text-[10rem] md:text-[16rem] tracking-tighter pointer-events-none leading-none">

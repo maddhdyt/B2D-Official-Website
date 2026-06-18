@@ -3,6 +3,9 @@ import Footer from '../components/Footer';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowUpRight, Plus, Minus } from 'lucide-react';
+import mockup1 from '../assets/creative-service/Creative Service-1.png';
+import mockup2 from '../assets/creative-service/Creative Service-2.png';
+import mockup3 from '../assets/creative-service/Creative Service-3.png';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -209,9 +212,9 @@ const ContentCreative = () => {
           <div className="md:col-span-5 flex flex-col gap-8 md:gap-24 relative z-10">
             <div className="showcase-image-container w-full aspect-[4/5] overflow-hidden rounded-sm">
               <img 
-                src="/assets/editorial/b2d_creative_director.png" 
+                src={mockup1} 
                 alt="B2D Creative Director" 
-                className="w-full h-[120%] object-cover object-center origin-top"
+                className="w-full h-full object-cover object-center origin-top"
               />
             </div>
             
@@ -228,17 +231,17 @@ const ContentCreative = () => {
           <div className="md:col-span-7 flex flex-col gap-8 md:gap-16 pt-0 md:pt-32">
             <div className="showcase-image-container w-full aspect-[16/9] overflow-hidden rounded-sm ml-0 md:-ml-24 relative z-20">
               <img 
-                src="/assets/editorial/b2d_film_production.png" 
+                src={mockup2} 
                 alt="B2D Film Production" 
-                className="w-full h-[120%] object-cover object-center origin-top"
+                className="w-full h-full object-cover object-center origin-top"
               />
             </div>
             
             <div className="showcase-image-container w-[80%] md:w-[60%] aspect-square overflow-hidden rounded-sm ml-auto">
               <img 
-                src="/assets/editorial/b2d_abstract_motion.png" 
+                src={mockup3} 
                 alt="Abstract Motion Graphics" 
-                className="w-full h-[120%] object-cover object-center origin-top"
+                className="w-full h-full object-cover object-center origin-top"
               />
             </div>
           </div>
