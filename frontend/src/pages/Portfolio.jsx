@@ -27,6 +27,7 @@ export default function Portfolio() {
   const containerRef = useRef(null);
   const heroRef = useRef(null);
   const cardsRef = useRef([]);
+  const innerCardsRef = useRef([]);
 
   const [portfolios, setPortfolios] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -75,112 +76,118 @@ export default function Portfolio() {
   useEffect(() => {
     if (floatingCards.length === 0) return;
     window.scrollTo(0, 0);
-    const ctx = gsap.context(() => {
-      // 1. Entrance Stagger for floating cards
-      gsap.fromTo(
-        cardsRef.current,
-        {
-          opacity: 0,
-          scale: 0,
-          z: -500,
-          rotation: (i) => floatingCards[i].rotation + 45
-        },
-        {
-          opacity: (i) => floatingCards[i].opacity,
-          scale: (i) => floatingCards[i].scale,
-          z: (i) => floatingCards[i].z,
-          rotation: (i) => floatingCards[i].rotation,
-          duration: 2,
-          stagger: {
-            amount: 1.5,
-            from: "random"
-          },
-          ease: "expo.out",
-          delay: 0.2
-        }
-      );
 
-      // 2. Continuous Organic Floating Motion
-      cardsRef.current.forEach((card, i) => {
-        gsap.to(card, {
-          y: `+=${20 + Math.random() * 30}`,
-          x: `+=${(Math.random() - 0.5) * 20}`,
-          rotation: `+=${(Math.random() - 0.5) * 10}`,
-          duration: 3 + Math.random() * 4,
-          repeat: -1,
-          yoyo: true,
-          ease: "sine.inOut",
-          delay: Math.random() * 2
-        });
-      });
+    let ctx;
+    let heroEl = heroRef.current;
+    let mouseHandler;
 
-      // 3. Hero Text Reveal
-      gsap.fromTo(
-        ".hero-text-line",
-        { y: 100, opacity: 0 },
-        { y: 0, opacity: 1, duration: 1.5, stagger: 0.15, ease: "power4.out", delay: 0.5 }
-      );
-
-      // 4. Scroll Parallax for Hero
-      gsap.to(cardsRef.current, {
-        y: (i) => -300 * floatingCards[i].parallaxSpeed * 10,
-        ease: "none",
-        scrollTrigger: {
-          trigger: heroRef.current,
-          start: "top top",
-          end: "bottom top",
-          scrub: true
-        }
-      });
-
-      // 5. Editorial Showcase Reveal
-      const projectRows = gsap.utils.toArray('.project-row');
-      projectRows.forEach(row => {
+    // Yield to browser paint before starting heavy GSAP math
+    const initTimer = setTimeout(() => {
+      ctx = gsap.context(() => {
+        // 1. Entrance Stagger for floating cards
         gsap.fromTo(
-          row,
-          { y: 50, opacity: 0 },
+          cardsRef.current,
           {
-            y: 0,
-            opacity: 1,
-            duration: 1,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: row,
-              start: "top 85%"
-            }
+            opacity: 0,
+            scale: 0,
+            z: -500,
+            rotation: (i) => floatingCards[i].rotation + 45
+          },
+          {
+            opacity: (i) => floatingCards[i].opacity,
+            scale: (i) => floatingCards[i].scale,
+            z: (i) => floatingCards[i].z,
+            rotation: (i) => floatingCards[i].rotation,
+            duration: 2,
+            stagger: {
+              amount: 1.5,
+              from: "random"
+            },
+            ease: "expo.out",
+            delay: 0.2 // Normal delay now that we've yielded
           }
         );
-      });
 
-    }, containerRef);
-
-    // Mouse Parallax Logic
-    const handleMouseMove = (e) => {
-      const { innerWidth, innerHeight } = window;
-      const xPos = (e.clientX / innerWidth - 0.5) * 2; // -1 to 1
-      const yPos = (e.clientY / innerHeight - 0.5) * 2;
-
-      cardsRef.current.forEach((card, i) => {
-        if (!card) return;
-        const speed = floatingCards[i].parallaxSpeed * 100;
-        gsap.to(card, {
-          x: -xPos * speed,
-          y: -yPos * speed,
-          duration: 1,
-          ease: "power2.out",
-          overwrite: "auto"
+        // 2. Continuous Organic Floating Motion
+        cardsRef.current.forEach((card, i) => {
+          gsap.to(card, {
+            yPercent: `+=${10 + Math.random() * 15}`,
+            xPercent: `+=${(Math.random() - 0.5) * 10}`,
+            rotation: `+=${(Math.random() - 0.5) * 10}`,
+            duration: 3 + Math.random() * 4,
+            repeat: -1,
+            yoyo: true,
+            ease: "sine.inOut",
+            delay: Math.random() * 2
+          });
         });
-      });
-    };
 
-    const heroEl = heroRef.current;
-    if (heroEl) {
-      heroEl.addEventListener('mousemove', handleMouseMove);
-    }
+        // 3. Hero Text Reveal
+        gsap.fromTo(
+          ".hero-text-line",
+          { y: 100, opacity: 0 },
+          { y: 0, opacity: 1, duration: 1.5, stagger: 0.15, ease: "power4.out", delay: 0.2 }
+        );
+
+        // 4. Scroll Parallax for Hero
+        gsap.to(cardsRef.current, {
+          y: (i) => -300 * floatingCards[i].parallaxSpeed * 10,
+          ease: "none",
+          scrollTrigger: {
+            trigger: heroRef.current,
+            start: "top top",
+            end: "bottom top",
+            scrub: true
+          }
+        });
+
+        // 5. Editorial Showcase Reveal
+        const projectRows = gsap.utils.toArray('.project-row');
+        projectRows.forEach(row => {
+          gsap.fromTo(
+            row,
+            { y: 50, opacity: 0 },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 1,
+              ease: "power3.out",
+              scrollTrigger: {
+                trigger: row,
+                start: "top 85%"
+              }
+            }
+          );
+        });
+
+      }, containerRef);
+
+      // Mouse Parallax Logic
+      const xSetters = innerCardsRef.current.map(card => gsap.quickTo(card, "x", { duration: 0.8, ease: "power2.out" }));
+      const ySetters = innerCardsRef.current.map(card => gsap.quickTo(card, "y", { duration: 0.8, ease: "power2.out" }));
+
+      mouseHandler = (e) => {
+        const { innerWidth, innerHeight } = window;
+        const xPos = (e.clientX / innerWidth - 0.5) * 2;
+        const yPos = (e.clientY / innerHeight - 0.5) * 2;
+
+        innerCardsRef.current.forEach((card, i) => {
+          if (!card || !xSetters[i] || !ySetters[i]) return;
+          const speed = floatingCards[i].parallaxSpeed * 100;
+          xSetters[i](-xPos * speed);
+          ySetters[i](-yPos * speed);
+        });
+      };
+
+      if (heroEl) {
+        heroEl.addEventListener('mousemove', mouseHandler);
+      }
+    }, 150);
 
     return () => {
-      ctx.revert();
-      if (heroEl) heroEl.removeEventListener('mousemove', handleMouseMove);
+      clearTimeout(initTimer);
+      if (ctx) ctx.revert();
+      if (heroEl && mouseHandler) heroEl.removeEventListener('mousemove', mouseHandler);
     };
   }, [floatingCards]);
 
@@ -206,21 +213,23 @@ export default function Portfolio() {
               <div
                 key={card.id}
                 ref={el => cardsRef.current[idx] = el}
-                className="absolute w-48 md:w-64 aspect-[4/3] rounded-sm overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/5"
+                className="absolute w-48 md:w-64 aspect-[4/3] rounded-sm overflow-hidden shadow-xl border border-white/5 opacity-0"
                 style={{
                   top: card.top,
-                  left: card.left,
-                  willChange: "transform, opacity"
+                  left: card.left
                 }}
               >
-                <div className="absolute inset-0 bg-[#00D4FF]/10 mix-blend-overlay z-10" />
-                <Link to={`/portfolio/${card.project.slug}`}>
-                  <img 
-                    src={card.image} 
-                    alt="" 
-                    className="w-full h-full object-cover filter contrast-125 saturate-50 hover:saturate-100 hover:contrast-100 transition-all duration-500"
-                  />
-                </Link>
+                <div ref={el => innerCardsRef.current[idx] = el} className="w-full h-full relative">
+                  <div className="absolute inset-0 bg-[#00D4FF]/5 z-10 pointer-events-none" />
+                  <Link to={`/portfolio/${card.project.slug}`} className="block w-full h-full">
+                    <img 
+                      src={card.project.coverImage || card.image} 
+                      alt="" 
+                      decoding="async"
+                      className="w-full h-full object-cover opacity-60 hover:opacity-100 transition-opacity duration-500"
+                    />
+                  </Link>
+                </div>
               </div>
             ))}
           </div>
@@ -262,8 +271,9 @@ export default function Portfolio() {
                   <Link to={`/portfolio/${project.slug}`} className="lg:col-span-8 overflow-hidden rounded-sm relative cursor-pointer block">
                     <div className="absolute inset-0 bg-[#00D4FF]/0 group-hover:bg-[#00D4FF]/10 transition-colors duration-500 z-10 pointer-events-none" />
                     <img 
-                      src={mockupImages[idx % mockupImages.length]} 
+                      src={project.coverImage || mockupImages[idx % mockupImages.length]} 
                       alt={project.title}
+                      loading="lazy"
                       className="w-full h-full object-cover aspect-[16/9] transform group-hover:scale-105 transition-transform duration-1000 ease-[0.25,1,0.5,1]"
                     />
                   </Link>
@@ -283,7 +293,7 @@ export default function Portfolio() {
                     <div className="flex flex-col gap-4 border-t border-white/10 pt-8 mb-12">
                       <div className="flex justify-between text-sm">
                         <span className="text-white/40">Services</span>
-                        <span className="text-right">Strategy, UI/UX, Development</span>
+                        <span className="text-right">Branding, UI/UX, Development</span>
                       </div>
                       <div className="flex justify-between text-sm">
                         <span className="text-white/40">Result</span>

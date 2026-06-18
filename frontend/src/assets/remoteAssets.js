@@ -2,7 +2,7 @@ const imageKitBaseUrl = "https://ik.imagekit.io/yqhp1cmbp";
 
 export const remoteAssets = {
   logo: {
-    src: `${imageKitBaseUrl}/group24.png`,
+    src: `${imageKitBaseUrl}/logo%20b2d%20super%20hd.png`,
     width: 251,
     height: 36,
   },

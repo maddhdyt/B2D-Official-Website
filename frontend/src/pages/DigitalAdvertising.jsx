@@ -147,7 +147,7 @@ const DigitalAdvertising = () => {
       </div>
 
       {/* Hero Section */}
-      <section className="pt-16 pb-32 relative flex flex-col items-center overflow-hidden">
+      <section className="pt-16 pb-16 md:pb-32 relative flex flex-col items-center overflow-hidden">
         {/* Subtle background glow */}
         <div className="absolute top-1/4 right-1/4 w-[40vw] h-[40vw] bg-[#FC8319]/10 rounded-full blur-[150px] pointer-events-none"></div>
         <div className="absolute bottom-1/4 left-1/4 w-[30vw] h-[30vw] bg-[#69DEA0]/10 rounded-full blur-[150px] pointer-events-none"></div>
@@ -168,13 +168,12 @@ const DigitalAdvertising = () => {
                Join our performance roster for exclusive access to high-converting campaign architectures and real growth.
              </p>
              <div className="w-full flex-1 overflow-hidden mb-6 relative border border-black/10">
-               <div className="absolute inset-0 bg-[#FC8319] mix-blend-multiply pointer-events-none z-10"></div>
                <img src={mockup1} className="w-full h-full object-cover" alt="Dashboard" />
              </div>
-             <a href="#services" className="w-full bg-black text-white py-3 font-unbounded text-xs font-bold uppercase text-center hover:bg-black/90 transition-colors flex items-center justify-between px-4">
+             <button onClick={() => window.dispatchEvent(new CustomEvent('openContactDrawer'))} className="w-full bg-black text-white py-3 font-unbounded text-xs font-bold uppercase text-center hover:bg-black/90 transition-colors flex items-center justify-between px-4">
                <span>INITIATE CAMPAIGN</span>
                <ArrowUpRight size={16} />
-             </a>
+             </button>
           </div>
 
           {/* Right Text */}
@@ -204,7 +203,7 @@ const DigitalAdvertising = () => {
             {/* Line 1 */}
             <div className="flex flex-col md:flex-row justify-between items-start md:items-end border-b border-white/10 pb-2 mb-2 relative z-10">
               <div className="overflow-hidden">
-                <h1 className="hero-text-line font-unbounded text-[11vw] md:text-[7vw] lg:text-[6vw] xl:text-[7rem] leading-[0.9] font-black uppercase tracking-tighter mix-blend-difference text-white">
+                <h1 className="hero-text-line font-unbounded text-[11vw] md:text-[7vw] lg:text-[6vw] xl:text-[7rem] leading-[0.9] font-black uppercase tracking-tighter mix-blend-difference text-white pr-2 lg:pr-4">
                   TURN ATTENTION:
                 </h1>
               </div>
@@ -221,7 +220,7 @@ const DigitalAdvertising = () => {
                 <span className="font-unbounded text-lg md:text-3xl text-white">©</span>
               </div>
               <div className="overflow-hidden">
-                <h1 className="hero-text-line font-unbounded text-[8.5vw] md:text-[6vw] lg:text-[5.5vw] xl:text-[6.5rem] leading-[0.9] font-black uppercase tracking-tighter text-white">
+                <h1 className="hero-text-line font-unbounded text-[8.5vw] md:text-[6vw] lg:text-[5.5vw] xl:text-[6.5rem] leading-[0.9] font-black uppercase tracking-tighter text-white pr-2 lg:pr-4">
                   FROM <span className="font-playfair italic font-light normal-case tracking-normal text-[#FC8319]">(CLICKS)</span> TO
                 </h1>
               </div>
@@ -235,7 +234,7 @@ const DigitalAdvertising = () => {
             {/* Line 3 */}
             <div className="flex justify-end border-b border-white/10 pb-2 relative z-10">
                <div className="overflow-hidden">
-                 <h1 className="hero-text-line font-unbounded text-[11vw] md:text-[7vw] lg:text-[6.5vw] xl:text-[8rem] leading-[0.9] font-black uppercase tracking-tighter text-white">
+                 <h1 className="hero-text-line font-unbounded text-[11vw] md:text-[7vw] lg:text-[6.5vw] xl:text-[8rem] leading-[0.9] font-black uppercase tracking-tighter text-white pr-2 lg:pr-4">
                   REAL REVENUE
                 </h1>
                </div>
@@ -246,11 +245,11 @@ const DigitalAdvertising = () => {
       </section>
 
       {/* Services Grid (Modular Bento) */}
-      <section id="services" className="py-24 relative">
+      <section id="services" className="py-16 md:py-24 relative">
         <div className="absolute left-0 top-1/2 w-full h-[1px] bg-[#69DEA0]/10 pointer-events-none"></div>
         <div className="px-6 md:px-12 lg:px-24 max-w-7xl mx-auto">
           
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 md:mb-16 gap-4 md:gap-8">
             <div>
               <h2 className="font-playfair text-4xl md:text-6xl italic text-white/90">The Architecture</h2>
               <h3 className="font-unbounded text-xl md:text-2xl uppercase mt-2 text-[#69DEA0] font-bold">Of Conversion</h3>
@@ -302,19 +301,19 @@ const DigitalAdvertising = () => {
       </section>
 
       {/* Showcase Visuals & Philosophy */}
-      <section className="py-32 px-6 md:px-12 lg:px-24">
+      <section className="pb-16 md:pb-32 pt-8 md:pt-12 px-6 md:px-12 lg:px-24">
         <div className="max-w-7xl mx-auto">
           
-          <div className="divider-line w-full h-[1px] bg-white/10 origin-left mb-24"></div>
+          <div className="divider-line w-full h-[1px] bg-white/10 origin-left mb-8 md:mb-16"></div>
 
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-24 items-center mb-32">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-24 items-center mb-16 md:mb-32">
             <div className="md:col-span-5 relative z-10 order-2 md:order-1">
               <h2 className="font-playfair text-3xl md:text-4xl lg:text-5xl italic leading-tight mb-6 lg:mb-8">
                 Data is the foundation. <br/>
-                <span className="font-unbounded not-italic uppercase font-black text-transparent bg-clip-text bg-gradient-to-r from-white to-white/40 text-4xl md:text-5xl lg:text-6xl xl:text-[5rem] block mt-2">
+                <span className="font-unbounded not-italic uppercase font-black text-transparent bg-clip-text bg-gradient-to-r from-white to-white/40 text-4xl md:text-5xl lg:text-[3.5rem] xl:text-[4.5rem] block w-fit mt-2">
                   Strategy
                 </span>
-                <span className="font-unbounded not-italic uppercase font-black text-[#FC8319] text-4xl md:text-5xl lg:text-6xl xl:text-[5rem] block -mt-1 lg:-mt-2 drop-shadow-[0_0_15px_rgba(252,131,25,0.2)]">
+                <span className="font-unbounded not-italic uppercase font-black text-[#FC8319] text-4xl md:text-5xl lg:text-[3.5rem] xl:text-[4.5rem] block w-fit -mt-1 lg:-mt-2 drop-shadow-[0_0_15px_rgba(252,131,25,0.2)]">
                   Is The Catalyst.
                 </span>
               </h2>
@@ -325,44 +324,73 @@ const DigitalAdvertising = () => {
                 <span className="w-12 h-[1px] bg-[#69DEA0]"></span>
                 <span className="font-unbounded text-xs uppercase tracking-widest text-[#69DEA0]">Premium Growth</span>
               </div>
+              
+              {/* Social Proof Metric */}
+              <div className="mt-12 p-6 rounded-xl border border-white/10 bg-white/[0.02] backdrop-blur-md relative overflow-hidden">
+                <div className="absolute top-0 left-0 w-1 h-full bg-[#FC8319]"></div>
+                <p className="font-unbounded text-sm uppercase tracking-widest text-white/50 mb-2">Proven Track Record</p>
+                <div className="flex items-end gap-3">
+                  <span className="font-playfair text-4xl md:text-5xl text-[#69DEA0]">+350%</span>
+                  <span className="font-sans text-sm text-white/80 pb-1 md:pb-2 leading-tight">Average ROAS in Q4 <br className="hidden md:block" />for Product & Service Clients</span>
+                </div>
+              </div>
             </div>
 
             <div className="md:col-span-7 order-1 md:order-2">
-              <div className="showcase-image w-full aspect-[4/3] rounded-2xl overflow-hidden border border-white/5 relative shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+              <div className="w-full aspect-[4/3] rounded-2xl overflow-hidden border border-white/5 relative shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
                 <div className="absolute inset-0 bg-[#FC8319]/10 mix-blend-overlay z-10 pointer-events-none"></div>
                 <img 
                   src={mockup2} 
                   alt="Holographic Data Ecosystem" 
-                  className="w-full h-full object-cover origin-top"
+                  className="w-full h-full object-cover"
                 />
               </div>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 mb-32">
-            <div className="md:col-span-8">
-               <div className="showcase-image w-full aspect-video rounded-2xl overflow-hidden border border-white/5 relative">
-                <div className="absolute inset-0 bg-gradient-to-t from-[#050A18] via-transparent to-transparent z-10 pointer-events-none"></div>
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 mb-16 md:mb-32 items-stretch">
+            <div className="md:col-span-8 flex flex-col h-full">
+               <div className="w-full flex-1 min-h-[250px] md:min-h-0 rounded-t-2xl overflow-hidden border border-white/5 relative">
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0A1428] via-transparent to-transparent z-10 pointer-events-none opacity-50"></div>
                 <img 
                   src={mockup3} 
                   alt="Conversion Funnel 3D" 
-                  className="w-full h-full object-cover origin-top"
+                  className="w-full h-full object-cover"
                 />
               </div>
+              <div className="bg-gradient-to-b from-[#0A1428] to-[#050A18] border border-white/5 border-t-0 rounded-b-2xl p-6 md:p-8 flex flex-wrap gap-4 items-center justify-between">
+                 <div>
+                   <p className="font-unbounded text-[10px] uppercase tracking-widest text-[#FC8319] mb-2">FMCG Product Brand</p>
+                   <h4 className="font-playfair italic text-2xl md:text-3xl text-white">Meta Ads Scaling</h4>
+                 </div>
+                 <div className="text-left md:text-right">
+                   <p className="font-sans text-[10px] uppercase tracking-widest text-white/50 mb-1">Average ROAS</p>
+                   <p className="font-unbounded font-bold text-3xl md:text-4xl text-[#69DEA0]">4.2x</p>
+                 </div>
+              </div>
             </div>
-            <div className="md:col-span-4">
-               <div className="showcase-image w-full h-full min-h-[300px] rounded-2xl overflow-hidden border border-white/5 relative">
+
+            <div className="md:col-span-4 flex flex-col h-full">
+               <div className="w-full flex-1 min-h-[250px] md:min-h-0 rounded-t-2xl overflow-hidden border border-white/5 relative">
                 <div className="absolute inset-0 bg-[#69DEA0]/5 mix-blend-overlay z-10 pointer-events-none"></div>
                 <img 
                   src={mockup4} 
                   alt="Analytics Dashboard Macro" 
-                  className="w-full h-full object-cover origin-top"
+                  className="w-full h-full object-cover"
                 />
+              </div>
+              <div className="bg-gradient-to-b from-[#0A1428] to-[#050A18] border border-white/5 border-t-0 rounded-b-2xl p-6 md:p-8 flex flex-col justify-center">
+                 <p className="font-unbounded text-[10px] uppercase tracking-widest text-[#FC8319] mb-2">B2B Consulting Service</p>
+                 <h4 className="font-playfair italic text-2xl md:text-3xl text-white mb-6">Google Ads Search</h4>
+                 <div>
+                   <p className="font-sans text-[10px] uppercase tracking-widest text-white/50 mb-1">Conversion Rate</p>
+                   <p className="font-unbounded font-bold text-3xl md:text-4xl text-[#69DEA0]">+12.5%</p>
+                 </div>
               </div>
             </div>
           </div>
 
-          <div className="divider-line w-full h-[1px] bg-gradient-to-r from-transparent via-[#69DEA0]/30 to-transparent origin-center mb-32"></div>
+          <div className="divider-line w-full h-[1px] bg-gradient-to-r from-transparent via-[#69DEA0]/30 to-transparent origin-center mb-16 md:mb-32"></div>
 
           {/* Call to Action Minimal */}
           <div className="text-center flex flex-col items-center">
@@ -370,16 +398,18 @@ const DigitalAdvertising = () => {
             <h2 className="font-unbounded text-4xl md:text-7xl font-black uppercase tracking-tighter mb-12 drop-shadow-[0_0_20px_rgba(252,131,25,0.1)]">
               Command Your <br/> Market.
             </h2>
-            <a href="/contact" className="group relative px-10 py-5 bg-transparent overflow-hidden rounded-full border border-white/20 hover:border-[#FC8319] transition-colors duration-500">
+            <button onClick={() => window.dispatchEvent(new CustomEvent('openContactDrawer'))} className="group relative px-10 py-5 bg-transparent overflow-hidden rounded-full border border-white/20 hover:border-[#FC8319] transition-colors duration-500">
               <div className="absolute inset-0 bg-gradient-to-r from-[#FC8319] to-[#69DEA0] translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)]"></div>
               <span className="relative z-10 font-unbounded text-sm uppercase tracking-widest text-white flex items-center gap-3 mix-blend-difference">
                 Initiate Campaign <ArrowUpRight size={16} />
               </span>
-            </a>
+            </button>
           </div>
 
         </div>
       </section>
+
+
 
       <Footer />
     </div>

@@ -8,27 +8,27 @@ export default function ProcessMinimal() {
   const steps = [
     {
       num: "01",
-      title: "Dengarkan",
-      duration: "1–2 hari",
-      desc: "Sebelum satu baris kode ditulis, kami duduk bersama Anda. Memahami bisnis, audiens, dan tujuan sebenarnya di balik proyek ini."
+      title: "Discovery & Audit",
+      duration: "1–3 hari",
+      desc: "Kami tidak sekadar menulis kode. Fase ini didedikasikan untuk membedah model bisnis Anda, menganalisa kompetitor, dan merumuskan arsitektur teknis yang selaras dengan tujuan komersial perusahaan."
     },
     {
       num: "02",
-      title: "Rancang",
+      title: "Arsitektur & Desain",
       duration: "3–7 hari",
-      desc: "Wireframe, sistem desain, dan prototype interaktif — semuanya Anda setujui sebelum masuk ke development."
+      desc: "Menerjemahkan strategi bisnis menjadi visual. Kami merumuskan wireframe, purwarupa interaktif (prototype), dan sistem antarmuka (UI) yang dirancang khusus untuk memaksimalkan rasio konversi (CRO)."
     },
     {
       num: "03",
-      title: "Bangun",
+      title: "Development & QA",
       duration: "1–4 minggu",
-      desc: "Development dengan standar kode bersih, performa tinggi, dan struktur yang mudah dikembangkan di masa depan."
+      desc: "Eksekusi teknis dengan standar industri B2B. Memanfaatkan tumpukan teknologi modern untuk memastikan keamanan tingkat tinggi, performa kilat, dan kode yang mudah dikembangkan di masa depan."
     },
     {
       num: "04",
-      title: "Serahkan",
+      title: "Deployment & Support",
       duration: "ongoing",
-      desc: "Bukan serah terima lalu selesai. Kami pastikan Anda nyaman mengelola — dan ada jika Anda butuh kami."
+      desc: "Peluncuran sistem tanpa hambatan (zero-downtime). Kami tidak hanya melakukan serah terima, namun juga mengawal stabilitas ekosistem digital Anda melalui pemeliharaan teknis berkelanjutan."
     }
   ];
 
@@ -40,7 +40,7 @@ export default function ProcessMinimal() {
         <div className="md:w-1/2 relative">
           <div className="sticky top-32">
             <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tighter text-white leading-[1.05]">
-              Bagaimana<br />kami<br />bekerja?
+              Metodologi<br />Eksekusi
             </h2>
           </div>
         </div>
@@ -56,7 +56,7 @@ export default function ProcessMinimal() {
                 onClick={() => setActiveIdx(isActive ? -1 : idx)}
               >
                 {/* Header Accordion */}
-                <div className="flex items-start justify-between">
+                <div className="flex items-start justify-between pr-4 md:pr-8">
                   <div className="flex items-start gap-3">
                     <h3 className={`text-2xl md:text-3xl lg:text-4xl tracking-tight transition-colors duration-300 font-medium ${isActive ? 'text-white' : 'text-white/60 group-hover:text-white/80'}`}>
                       {step.title}

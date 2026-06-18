@@ -127,7 +127,7 @@ const ContentCreative = () => {
       <div className="h-24 md:h-32"></div>
 
       {/* Hero Section */}
-      <section ref={heroRef} className="px-6 md:px-12 lg:px-24 pt-12 pb-32">
+      <section ref={heroRef} className="px-6 md:px-12 lg:px-24 pt-12 pb-16 md:pb-32">
         <div className="max-w-7xl mx-auto">
           <p className="font-unbounded text-sm md:text-base tracking-widest text-[#7661E8] mb-8 uppercase flex items-center gap-4">
             <span className="w-12 h-px bg-[#7661E8]"></span>
@@ -156,9 +156,9 @@ const ContentCreative = () => {
       </section>
 
       {/* Services Section */}
-      <section ref={servicesRef} className="py-24">
+      <section ref={servicesRef} className="py-16 md:py-24">
         <div className="px-6 md:px-12 lg:px-24 max-w-7xl mx-auto">
-          <h2 className="font-playfair text-3xl md:text-5xl text-white/80 italic mb-16">Our Creative Arsenal</h2>
+          <h2 className="font-playfair text-3xl md:text-5xl text-white/80 italic mb-8 md:mb-16">Our Creative Arsenal</h2>
         </div>
         
         <div className="flex flex-col">
@@ -166,7 +166,7 @@ const ContentCreative = () => {
             <div key={index} className="w-full">
               <div className="divider-line w-full h-px bg-white/10 origin-left"></div>
               <div 
-                className="group px-6 md:px-12 lg:px-24 py-12 md:py-16 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 cursor-pointer items-start hover:bg-white/[0.02] transition-colors duration-500"
+                className="group px-6 md:px-12 lg:px-24 py-8 md:py-16 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 cursor-pointer items-start hover:bg-white/[0.02] transition-colors duration-500"
                 onClick={() => toggleService(index)}
               >
                 <div className="md:col-span-5 relative">
@@ -206,11 +206,11 @@ const ContentCreative = () => {
       </section>
 
       {/* Visual Showcase Section */}
-      <section ref={showcaseRef} className="py-32 px-6 md:px-12 lg:px-24 overflow-hidden">
+      <section ref={showcaseRef} className="py-16 md:py-32 px-6 md:px-12 lg:px-24 overflow-hidden">
         <div className="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 items-center">
           
           <div className="md:col-span-5 flex flex-col gap-8 md:gap-24 relative z-10">
-            <div className="showcase-image-container w-full aspect-[4/5] overflow-hidden rounded-sm">
+            <div className="showcase-image-container w-full aspect-square overflow-hidden rounded-lg shadow-2xl">
               <img 
                 src={mockup1} 
                 alt="B2D Creative Director" 
@@ -229,7 +229,7 @@ const ContentCreative = () => {
           </div>
 
           <div className="md:col-span-7 flex flex-col gap-8 md:gap-16 pt-0 md:pt-32">
-            <div className="showcase-image-container w-full aspect-[16/9] overflow-hidden rounded-sm ml-0 md:-ml-24 relative z-20">
+            <div className="showcase-image-container w-[90%] md:w-[85%] aspect-square overflow-hidden rounded-lg shadow-2xl ml-0 md:-ml-12 relative z-20">
               <img 
                 src={mockup2} 
                 alt="B2D Film Production" 
@@ -237,7 +237,7 @@ const ContentCreative = () => {
               />
             </div>
             
-            <div className="showcase-image-container w-[80%] md:w-[60%] aspect-square overflow-hidden rounded-sm ml-auto">
+            <div className="showcase-image-container w-[70%] md:w-[55%] aspect-square overflow-hidden rounded-lg shadow-2xl ml-auto">
               <img 
                 src={mockup3} 
                 alt="Abstract Motion Graphics" 
@@ -250,7 +250,7 @@ const ContentCreative = () => {
       </section>
 
       {/* Philosophy Section */}
-      <section className="py-32 px-6 md:px-12 lg:px-24 bg-[#050505]">
+      <section className="py-16 md:py-32 px-6 md:px-12 lg:px-24 bg-[#050505]">
         <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
           <div className="w-px h-24 bg-gradient-to-b from-[#7661E8] to-transparent mb-12"></div>
           <h2 className="font-unbounded text-4xl md:text-6xl lg:text-7xl font-bold uppercase leading-tight mb-8">
@@ -260,9 +260,9 @@ const ContentCreative = () => {
           <p className="font-sans text-xl md:text-2xl text-white/50 font-light leading-relaxed max-w-2xl">
             In a landscape saturated with disposable content, we forge visual narratives built to endure. Our approach merges meticulous strategy with uncompromising aesthetic standards, ensuring your brand doesn't just participate in the conversation—it leads it.
           </p>
-          <a href="/contact" className="mt-16 group flex items-center justify-center w-32 h-32 md:w-40 md:h-40 rounded-full border border-white/20 hover:border-[#D5F155] transition-colors duration-500 relative">
-            <span className="font-unbounded text-xs md:text-sm uppercase tracking-widest group-hover:text-[#D5F155] transition-colors duration-500 z-10">
-              Start Project
+          <a href="/contact" className="mt-16 group flex items-center justify-center w-36 h-36 md:w-44 md:h-44 rounded-full border border-white/20 hover:border-[#D5F155] transition-colors duration-500 relative">
+            <span className="font-unbounded text-xs md:text-sm uppercase tracking-[0.2em] group-hover:text-[#D5F155] transition-colors duration-500 z-10 text-center leading-loose">
+              START<br />PROJECT
             </span>
             <div className="absolute inset-0 bg-[#D5F155]/10 rounded-full scale-0 group-hover:scale-100 transition-transform duration-500 ease-out"></div>
           </a>

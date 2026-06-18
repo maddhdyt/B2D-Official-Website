@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useEditor, EditorContent } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import Image from '@tiptap/extension-image';
@@ -112,6 +113,12 @@ export default function RichTextEditor({ content, onChange }) {
       },
     },
   });
+
+  useEffect(() => {
+    if (editor && content && content !== editor.getHTML()) {
+      editor.commands.setContent(content);
+    }
+  }, [content, editor]);
 
   return (
     <div className="border border-border rounded-xl overflow-hidden bg-card focus-within:border-primary focus-within:ring-1 focus-within:ring-primary transition-all">

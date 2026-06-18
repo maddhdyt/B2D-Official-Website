@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useScroll, useMotionValueEvent } from "framer-motion";
 import { Menu } from "lucide-react";
 import { remoteAssets } from "../../assets/remoteAssets";
@@ -11,6 +11,12 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isContactOpen, setIsContactOpen] = useState(false);
+
+  useEffect(() => {
+    const handleOpenContact = () => setIsContactOpen(true);
+    window.addEventListener("openContactDrawer", handleOpenContact);
+    return () => window.removeEventListener("openContactDrawer", handleOpenContact);
+  }, []);
 
   const { scrollY } = useScroll();
 

@@ -45,7 +45,7 @@ export default function Footer() {
             transition={{ duration: 0.8 }}
           >
             <div className="absolute inset-0 bg-[#00A8FF] blur-[30px] opacity-30 rounded-full" />
-            <img src="https://ik.imagekit.io/yqhp1cmbp/group24.png" alt="B2D Logo" className="relative h-12 md:h-16 w-auto" />
+            <img src="https://ik.imagekit.io/yqhp1cmbp/logo%20b2d%20super%20hd.png" alt="B2D Logo" className="relative h-12 md:h-16 w-auto" />
           </m.div>
 
           {/* Main Footer Content */}
@@ -60,7 +60,7 @@ export default function Footer() {
               variants={fadeUp}
             >
               <div className="inline-block border border-white/20 rounded px-3 py-1 mb-6 w-max">
-                <span className="text-white text-xs font-bold tracking-widest uppercase">B2D AGENCY</span>
+                <span className="text-white text-xs font-bold tracking-widest uppercase">Official B2D</span>
               </div>
               <h3 className="text-white text-2xl md:text-3xl font-semibold tracking-tight mb-8 max-w-md leading-tight">
                 Sign up to harness the power of Digital Growth.
@@ -132,7 +132,7 @@ export default function Footer() {
             transition={{ duration: 1, delay: 0.5 }}
           >
             <p className="text-white/40 text-xs tracking-wider uppercase mb-8">
-              &copy; {currentYear} B2D AGENCY™
+              &copy; {currentYear} Official B2D™
             </p>
             <div className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center opacity-60">
               <svg className="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">

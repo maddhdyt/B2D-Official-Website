@@ -36,9 +36,13 @@ export default function AdminLayout() {
           isSidebarOpen ? "w-64" : "w-20"
         )}
       >
-        <div className="h-20 flex items-center px-6 border-b border-border">
-          <img src="https://ik.imagekit.io/yqhp1cmbp/group24.png" alt="B2D Logo" className="h-8 object-contain shrink-0" />
-          <div className={cn("ml-3 overflow-hidden whitespace-nowrap transition-all duration-300", !isSidebarOpen && "w-0 opacity-0")}>
+        <div className={cn("h-20 flex items-center border-b border-border transition-all duration-300", isSidebarOpen ? "px-6 justify-start" : "justify-center")}>
+          <img 
+            src={isSidebarOpen ? "https://ik.imagekit.io/yqhp1cmbp/logo%20b2d%20super%20hd.png" : "https://ik.imagekit.io/yqhp1cmbp/Group%2038.png"} 
+            alt="B2D Logo" 
+            className="h-8 object-contain shrink-0" 
+          />
+          <div className={cn("overflow-hidden whitespace-nowrap transition-all duration-300", isSidebarOpen ? "ml-3 w-auto opacity-100" : "w-0 opacity-0 ml-0 hidden")}>
             <p className="text-[10px] text-muted-foreground uppercase tracking-widest mt-1">Enterprise CMS</p>
           </div>
         </div>

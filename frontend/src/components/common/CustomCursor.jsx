@@ -93,12 +93,12 @@ export default function CustomCursor() {
     <div
       ref={cursorRef}
       // hidden on mobile since hover/mouse effects don't apply there
-      className="pointer-events-none fixed top-0 left-0 z-[99999] rounded-full border-2 border-[#3B82F6] hidden md:block"
+      className="pointer-events-none fixed top-0 left-0 z-[99999] rounded-full border-2 border-[#3B82F6]/80 hidden md:block"
       style={{
         width: '30px',
         height: '30px',
-        boxShadow: '0 0 10px rgba(59, 130, 246, 0.4), 0 0 20px rgba(59, 130, 246, 0.3), 0 0 40px rgba(59, 130, 246, 0.2)',
-        mixBlendMode: 'screen', // Gives it that glowing neon fusion with backgrounds
+        boxShadow: '0 0 15px rgba(59, 130, 246, 0.5), inset 0 0 10px rgba(59, 130, 246, 0.2)',
+        backgroundColor: 'rgba(59, 130, 246, 0.05)'
       }}
     />
   );

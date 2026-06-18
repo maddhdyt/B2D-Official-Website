@@ -1,0 +1,295 @@
+{
+  "portfolios": [
+    {
+      "id": 1,
+      "title": "Growth Intelligence",
+      "slug": "growth-intelligence",
+      "shortDesc": "Satu pusat kendali untuk membaca pertumbuhan, kanal, dan peluang konversi.",
+      "fullDesc": "<p>Satu pusat kendali untuk membaca pertumbuhan, kanal, dan peluang konversi. Details will be provided here.</p>",
+      "coverImage": "/src/assets/portfolio/analytics.webp",
+      "categoryId": 1,
+      "techStack": [
+        "React",
+        "Node.js",
+        "Tailwind CSS"
+      ],
+      "clientName": null,
+      "duration": null,
+      "projectUrl": null,
+      "isFeatured": true,
+      "metrics": null,
+      "results": null,
+      "createdAt": "2026-06-12T09:11:13.994Z",
+      "updatedAt": "2026-06-12T09:11:13.994Z",
+      "category": {
+        "id": 1,
+        "name": "Digital Advertising",
+        "slug": "digital-advertising",
+        "createdAt": "2026-06-12T09:11:13.693Z",
+        "updatedAt": "2026-06-12T09:11:13.693Z"
+      }
+    },
+    {
+      "id": 2,
+      "title": "Nova Brand System",
+      "slug": "nova-brand-system",
+      "shortDesc": "Identitas digital terpadu yang mengubah strategi menjadi pengalaman visual.",
+      "fullDesc": "<p>Identitas digital terpadu yang mengubah strategi menjadi pengalaman visual. Details will be provided here.</p>",
+      "coverImage": "/src/assets/portfolio/creative.webp",
+      "categoryId": 2,
+      "techStack": [
+        "React",
+        "Node.js",
+        "Tailwind CSS"
+      ],
+      "clientName": null,
+      "duration": null,
+      "projectUrl": null,
+      "isFeatured": true,
+      "metrics": null,
+      "results": null,
+      "createdAt": "2026-06-12T09:11:14.425Z",
+      "updatedAt": "2026-06-12T09:11:14.425Z",
+      "category": {
+        "id": 2,
+        "name": "Content & Creative",
+        "slug": "content-creative",
+        "createdAt": "2026-06-12T09:11:13.793Z",
+        "updatedAt": "2026-06-12T09:11:13.793Z"
+      }
+    },
+    {
+      "id": 3,
+      "title": "Flow CRM",
+      "slug": "flow-crm",
+      "shortDesc": "Sistem pipeline dan nurturing yang membuat setiap peluang bergerak lebih cepat.",
+      "fullDesc": "<p>Sistem pipeline dan nurturing yang membuat setiap peluang bergerak lebih cepat. Details will be provided here.</p>",
+      "coverImage": "/src/assets/portfolio/crm.webp",
+      "categoryId": 3,
+      "techStack": [
+        "React",
+        "Node.js",
+        "Tailwind CSS"
+      ],
+      "clientName": null,
+      "duration": null,
+      "projectUrl": null,
+      "isFeatured": true,
+      "metrics": null,
+      "results": null,
+      "createdAt": "2026-06-12T09:11:14.478Z",
+      "updatedAt": "2026-06-12T09:11:14.478Z",
+      "category": {
+        "id": 3,
+        "name": "Web Design & Development",
+        "slug": "web-design-development",
+        "createdAt": "2026-06-12T09:11:13.874Z",
+        "updatedAt": "2026-06-12T09:11:13.874Z"
+      }
+    },
+    {
+      "id": 4,
+      "title": "Revenue Command",
+      "slug": "revenue-command",
+      "shortDesc": "Dashboard real-time untuk menyatukan performa kampanye dan revenue.",
+      "fullDesc": "<p>Dashboard real-time untuk menyatukan performa kampanye dan revenue. Details will be provided here.</p>",
+      "coverImage": "/src/assets/portfolio/analytics.webp",
+      "categoryId": 1,
+      "techStack": [
+        "React",
+        "Node.js",
+        "Tailwind CSS"
+      ],
+      "clientName": null,
+      "duration": null,
+      "projectUrl": null,
+      "isFeatured": false,
+      "metrics": null,
+      "results": null,
+      "createdAt": "2026-06-12T09:11:14.515Z",
+      "updatedAt": "2026-06-12T09:11:14.515Z",
+      "category": {
+        "id": 1,
+        "name": "Digital Advertising",
+        "slug": "digital-advertising",
+        "createdAt": "2026-06-12T09:11:13.693Z",
+        "updatedAt": "2026-06-12T09:11:13.693Z"
+      }
+    },
+    {
+      "id": 5,
+      "title": "Digital Experience",
+      "slug": "digital-experience",
+      "shortDesc": "Ekosistem interface premium yang konsisten di seluruh customer journey.",
+      "fullDesc": "<p>Ekosistem interface premium yang konsisten di seluruh customer journey. Details will be provided here.</p>",
+      "coverImage": "/src/assets/portfolio/creative.webp",
+      "categoryId": 3,
+      "techStack": [
+        "React",
+        "Node.js",
+        "Tailwind CSS"
+      ],
+      "clientName": null,
+      "duration": null,
+      "projectUrl": null,
+      "isFeatured": false,
+      "metrics": null,
+      "results": null,
+      "createdAt": "2026-06-12T09:11:14.703Z",
+      "updatedAt": "2026-06-12T09:11:14.703Z",
+      "category": {
+        "id": 3,
+        "name": "Web Design & Development",
+        "slug": "web-design-development",
+        "createdAt": "2026-06-12T09:11:13.874Z",
+        "updatedAt": "2026-06-12T09:11:13.874Z"
+      }
+    }
+  ],
+  "blogs": [
+    {
+      "id": 1,
+      "title": "Things to Look for When Comparing Branding Alternatives",
+      "slug": "digital-brand-identity-2026",
+      "excerpt": "Discover the essential criteria for evaluating brand identity solutions in a digital-first era.",
+      "content": "<h2>The Shift in Digital Branding</h2><p>Building a brand today is vastly different from a decade ago...</p>",
+      "featuredImage": "/src/assets/portfolio/creative.webp",
+      "seoTitle": null,
+      "seoDesc": null,
+      "status": "PUBLISHED",
+      "readTime": 5,
+      "publishedAt": "2026-06-14T00:00:00.000Z",
+      "authorId": 1,
+      "categoryId": 1,
+      "createdAt": "2026-06-12T09:11:13.319Z",
+      "updatedAt": "2026-06-12T09:11:13.319Z",
+      "category": {
+        "id": 1,
+        "name": "Branding",
+        "slug": "branding",
+        "createdAt": "2026-06-12T09:11:13.049Z",
+        "updatedAt": "2026-06-12T09:11:13.049Z"
+      }
+    },
+    {
+      "id": 2,
+      "title": "The Best Performing TikTok Ads Creative",
+      "slug": "tiktok-ads-creative-performance",
+      "excerpt": "Pola visual, hook, dan struktur creative yang mendorong performa kampanye short-form video.",
+      "content": "<h2>Cracking the TikTok Algorithm</h2><p>TikTok has revolutionized how brands communicate with consumers...</p>",
+      "featuredImage": "/src/assets/articles/tiktok-ads.webp",
+      "seoTitle": null,
+      "seoDesc": null,
+      "status": "PUBLISHED",
+      "readTime": 5,
+      "publishedAt": "2026-06-10T00:00:00.000Z",
+      "authorId": 1,
+      "categoryId": 2,
+      "createdAt": "2026-06-12T09:11:13.359Z",
+      "updatedAt": "2026-06-12T09:11:13.359Z",
+      "category": {
+        "id": 2,
+        "name": "Paid Advertising",
+        "slug": "paid-advertising",
+        "createdAt": "2026-06-12T09:11:13.084Z",
+        "updatedAt": "2026-06-12T09:11:13.084Z"
+      }
+    },
+    {
+      "id": 3,
+      "title": "5 Stand-out Features of Branding You Should Know",
+      "slug": "standout-features-branding",
+      "excerpt": "Learn the core components that separate a forgettable business from an iconic brand.",
+      "content": "<h2>Beyond the Logo</h2><p>Many businesses mistake their logo for their brand...</p>",
+      "featuredImage": "/src/assets/portfolio/creative.webp",
+      "seoTitle": null,
+      "seoDesc": null,
+      "status": "PUBLISHED",
+      "readTime": 5,
+      "publishedAt": "2026-06-05T00:00:00.000Z",
+      "authorId": 1,
+      "categoryId": 1,
+      "createdAt": "2026-06-12T09:11:13.411Z",
+      "updatedAt": "2026-06-12T09:11:13.411Z",
+      "category": {
+        "id": 1,
+        "name": "Branding",
+        "slug": "branding",
+        "createdAt": "2026-06-12T09:11:13.049Z",
+        "updatedAt": "2026-06-12T09:11:13.049Z"
+      }
+    },
+    {
+      "id": 4,
+      "title": "Scaling Revenue with Advanced CRM Automation",
+      "slug": "crm-automation-scaling",
+      "excerpt": "How modern businesses use automated workflows to close deals faster and retain customers longer.",
+      "content": "<h2>The Automation Advantage</h2><p>Manual follow-ups are a thing of the past...</p>",
+      "featuredImage": "/src/assets/portfolio/crm.webp",
+      "seoTitle": null,
+      "seoDesc": null,
+      "status": "PUBLISHED",
+      "readTime": 5,
+      "publishedAt": "2026-06-01T00:00:00.000Z",
+      "authorId": 1,
+      "categoryId": 3,
+      "createdAt": "2026-06-12T09:11:13.447Z",
+      "updatedAt": "2026-06-12T09:11:13.447Z",
+      "category": {
+        "id": 3,
+        "name": "CRM & Automation",
+        "slug": "crm-automation",
+        "createdAt": "2026-06-12T09:11:13.162Z",
+        "updatedAt": "2026-06-12T09:11:13.162Z"
+      }
+    },
+    {
+      "id": 5,
+      "title": "Integrating Deep Analytics into Modern Web Apps",
+      "slug": "web-development-analytics",
+      "excerpt": "Stop flying blind. Learn how to implement event-driven analytics architecture in your React applications.",
+      "content": "<h2>Data is the New Code</h2><p>Building a fast web application is only step one...</p>",
+      "featuredImage": "/src/assets/portfolio/analytics.webp",
+      "seoTitle": null,
+      "seoDesc": null,
+      "status": "PUBLISHED",
+      "readTime": 5,
+      "publishedAt": "2026-05-28T00:00:00.000Z",
+      "authorId": 1,
+      "categoryId": 4,
+      "createdAt": "2026-06-12T09:11:13.489Z",
+      "updatedAt": "2026-06-12T09:11:13.489Z",
+      "category": {
+        "id": 4,
+        "name": "Web Development",
+        "slug": "web-development",
+        "createdAt": "2026-06-12T09:11:13.203Z",
+        "updatedAt": "2026-06-12T09:11:13.203Z"
+      }
+    },
+    {
+      "id": 6,
+      "title": "Rookie Mistakes You're Making With Your Branding",
+      "slug": "rookie-mistakes-branding",
+      "excerpt": "Common pitfalls that drain marketing budgets and how to avoid them effectively.",
+      "content": "<h2>The Cost of Inconsistency</h2><p>One of the biggest rookie mistakes is inconsistency...</p>",
+      "featuredImage": "/src/assets/portfolio/creative.webp",
+      "seoTitle": null,
+      "seoDesc": null,
+      "status": "PUBLISHED",
+      "readTime": 5,
+      "publishedAt": "2026-05-20T00:00:00.000Z",
+      "authorId": 1,
+      "categoryId": 5,
+      "createdAt": "2026-06-12T09:11:13.526Z",
+      "updatedAt": "2026-06-12T09:11:13.526Z",
+      "category": {
+        "id": 5,
+        "name": "Business Growth",
+        "slug": "business-growth",
+        "createdAt": "2026-06-12T09:11:13.240Z",
+        "updatedAt": "2026-06-12T09:11:13.240Z"
+      }
+    }
+  ]
+}

@@ -44,7 +44,7 @@ export default function PortfolioForm() {
           isFeatured: item.isFeatured
         });
         if (item.coverImage) {
-          setCoverPreview(item.coverImage.startsWith("http") ? item.coverImage : `http://localhost:5000${item.coverImage}`);
+          setCoverPreview(item.coverImage.startsWith("http") || item.coverImage.startsWith("/src/") ? item.coverImage : `http://localhost:5000${item.coverImage}`);
         }
       }).catch(console.error);
     }

@@ -16,7 +16,7 @@ const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: "B2D",
-  logo: "https://ik.imagekit.io/yqhp1cmbp/group24.png",
+  logo: "https://ik.imagekit.io/yqhp1cmbp/logo%20b2d%20super%20hd.png",
   description:
     "Agensi strategi, desain, dan pemasaran digital yang membantu brand tumbuh lebih cepat.",
 };

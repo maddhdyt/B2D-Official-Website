@@ -34,62 +34,7 @@ async function main() {
   console.log('Blog categories seeded');
 
   // 3. Blogs
-  const blogs = [
-    {
-      title: "Things to Look for When Comparing Branding Alternatives",
-      slug: "digital-brand-identity-2026",
-      categoryName: "Branding",
-      excerpt: "Discover the essential criteria for evaluating brand identity solutions in a digital-first era.",
-      image: "/src/assets/portfolio/creative.webp",
-      content: `<h2>The Shift in Digital Branding</h2><p>Building a brand today is vastly different from a decade ago...</p>`,
-      publishedAt: new Date("2026-06-14")
-    },
-    {
-      title: "The Best Performing TikTok Ads Creative",
-      slug: "tiktok-ads-creative-performance",
-      categoryName: "Paid Advertising",
-      excerpt: "Pola visual, hook, dan struktur creative yang mendorong performa kampanye short-form video.",
-      image: "/src/assets/articles/tiktok-ads.webp",
-      content: `<h2>Cracking the TikTok Algorithm</h2><p>TikTok has revolutionized how brands communicate with consumers...</p>`,
-      publishedAt: new Date("2026-06-10")
-    },
-    {
-      title: "5 Stand-out Features of Branding You Should Know",
-      slug: "standout-features-branding",
-      categoryName: "Branding",
-      excerpt: "Learn the core components that separate a forgettable business from an iconic brand.",
-      image: "/src/assets/portfolio/creative.webp",
-      content: `<h2>Beyond the Logo</h2><p>Many businesses mistake their logo for their brand...</p>`,
-      publishedAt: new Date("2026-06-05")
-    },
-    {
-      title: "Scaling Revenue with Advanced CRM Automation",
-      slug: "crm-automation-scaling",
-      categoryName: "CRM & Automation",
-      excerpt: "How modern businesses use automated workflows to close deals faster and retain customers longer.",
-      image: "/src/assets/portfolio/crm.webp",
-      content: `<h2>The Automation Advantage</h2><p>Manual follow-ups are a thing of the past...</p>`,
-      publishedAt: new Date("2026-06-01")
-    },
-    {
-      title: "Integrating Deep Analytics into Modern Web Apps",
-      slug: "web-development-analytics",
-      categoryName: "Web Development",
-      excerpt: "Stop flying blind. Learn how to implement event-driven analytics architecture in your React applications.",
-      image: "/src/assets/portfolio/analytics.webp",
-      content: `<h2>Data is the New Code</h2><p>Building a fast web application is only step one...</p>`,
-      publishedAt: new Date("2026-05-28")
-    },
-    {
-      title: "Rookie Mistakes You're Making With Your Branding",
-      slug: "rookie-mistakes-branding",
-      categoryName: "Business Growth",
-      excerpt: "Common pitfalls that drain marketing budgets and how to avoid them effectively.",
-      image: "/src/assets/portfolio/creative.webp",
-      content: `<h2>The Cost of Inconsistency</h2><p>One of the biggest rookie mistakes is inconsistency...</p>`,
-      publishedAt: new Date("2026-05-20")
-    }
-  ];
+  const blogs = [];
 
   for (const b of blogs) {
     const existing = await prisma.blog.findUnique({ where: { slug: b.slug } });
@@ -128,46 +73,74 @@ async function main() {
   // 5. Portfolios
   const portfolios = [
     {
-      title: "Growth Intelligence",
-      slug: "growth-intelligence",
-      categoryName: "Digital Advertising",
-      shortDesc: "Satu pusat kendali untuk membaca pertumbuhan, kanal, dan peluang konversi.",
-      coverImage: "/src/assets/portfolio/analytics.webp",
-      isFeatured: true
-    },
-    {
-      title: "Nova Brand System",
-      slug: "nova-brand-system",
-      categoryName: "Content & Creative",
-      shortDesc: "Identitas digital terpadu yang mengubah strategi menjadi pengalaman visual.",
-      coverImage: "/src/assets/portfolio/creative.webp",
-      isFeatured: true
-    },
-    {
-      title: "Flow CRM",
-      slug: "flow-crm",
+      title: "PT. Arka Mega Nusantara",
+      slug: "pt-arka-mega-nusantara",
       categoryName: "Web Design & Development",
-      shortDesc: "Sistem pipeline dan nurturing yang membuat setiap peluang bergerak lebih cepat.",
-      coverImage: "/src/assets/portfolio/crm.webp",
+      shortDesc: "Pembuatan website Company Profile elegan untuk PT. Arka Mega Nusantara dengan performa tinggi.",
+      fullDesc: "<div class='space-y-6'><h2 class='text-2xl font-bold font-playfair'>The Challenge</h2><p class='text-white/70'>PT. Arka Mega Nusantara, a rising star in their industry, needed a robust digital presence that matched their offline reputation. Their previous website was outdated, slow, and failed to communicate their core values to international clients.</p><h2 class='text-2xl font-bold font-playfair pt-4'>Our Solution</h2><p class='text-white/70'>We designed a high-performance, elegant Company Profile website from the ground up. By utilizing modern frameworks like React and Tailwind CSS, we ensured lighting-fast load times. The UI/UX was tailored to guide visitors seamlessly through their services and portfolio, establishing immediate trust.</p><h2 class='text-2xl font-bold font-playfair pt-4'>The Result</h2><p class='text-white/70'>Post-launch, the website saw a 300% increase in average session duration and a significant drop in bounce rate. It now serves as a powerful 24/7 sales engine, consistently generating high-quality B2B leads.</p></div>",
+      coverImage: "/src/assets/web-design-development/Testimoni Web Company Profile-1.png",
+      clientName: "PT. Arka Mega Nusantara",
+      duration: "6 Weeks",
+      projectUrl: "https://arkameganusantara.com",
+      techStack: ["React", "Next.js", "Tailwind CSS", "Framer Motion"],
       isFeatured: true
     },
     {
-      title: "Revenue Command",
-      slug: "revenue-command",
+      title: "Give Away Campaign",
+      slug: "give-away-campaign",
+      categoryName: "Content & Creative",
+      shortDesc: "Desain kampanye social media super kreatif untuk giveaway produk TWS earbuds.",
+      fullDesc: "<div class='space-y-6'><h2 class='text-2xl font-bold font-playfair'>The Campaign</h2><p class='text-white/70'>To drive rapid brand awareness and user engagement for a new line of TWS (True Wireless Stereo) earbuds, we orchestrated a massive social media giveaway campaign.</p><h2 class='text-2xl font-bold font-playfair pt-4'>Creative Strategy</h2><p class='text-white/70'>Our creative team developed eye-catching, high-contrast visual assets designed to stop scrollers in their tracks. We combined striking typography with high-quality product renders, ensuring the campaign felt premium yet accessible. The copy was crafted to maximize sharing and tagging.</p><h2 class='text-2xl font-bold font-playfair pt-4'>The Impact</h2><p class='text-white/70'>The campaign went viral within its target demographic, generating over 50,000 unique interactions in just 48 hours. Follower count increased by 45%, and the resulting buzz led to a record-breaking launch day for the product.</p></div>",
+      coverImage: "/src/assets/creative-service/Creative Service-1.png",
+      clientName: "SoundWave Audio",
+      duration: "2 Weeks",
+      projectUrl: "https://instagram.com/soundwave.audio",
+      techStack: ["Adobe Illustrator", "Photoshop", "Meta Ads Manager"],
+      isFeatured: true
+    },
+    {
+      title: "Meta Ads Performance",
+      slug: "meta-ads-performance",
       categoryName: "Digital Advertising",
-      shortDesc: "Dashboard real-time untuk menyatukan performa kampanye dan revenue.",
-      coverImage: "/src/assets/portfolio/analytics.webp",
+      shortDesc: "Optimasi kampanye Meta Ads yang menghasilkan ROAS tinggi dan konversi terukur.",
+      fullDesc: "<div class='space-y-6'><h2 class='text-2xl font-bold font-playfair'>The Objective</h2><p class='text-white/70'>Our client needed to drastically scale their e-commerce revenue without inflating their Customer Acquisition Cost (CAC). They had hit a ceiling with their previous Meta Ads structure and needed a data-driven breakthrough.</p><h2 class='text-2xl font-bold font-playfair pt-4'>Our Approach</h2><p class='text-white/70'>We completely restructured their ad accounts, implementing a rigorous A/B testing matrix for both creatives and copy. By utilizing advanced pixel tracking and lookalike audiences based on high-LTV customers, we honed in on the most profitable segments.</p><h2 class='text-2xl font-bold font-playfair pt-4'>The ROI</h2><p class='text-white/70'>Within three months, we achieved a sustained Return on Ad Spend (ROAS) of 4.5x, scaling their monthly ad budget by 200% while simultaneously reducing their CAC by 28%.</p></div>",
+      coverImage: "/src/assets/digital-advertising/Testimoni Meta Ads-1.png",
+      clientName: "Glow & Co Cosmetics",
+      duration: "3 Months",
+      projectUrl: "https://glowandco.id",
+      techStack: ["Meta Pixel", "Google Analytics 4", "Looker Studio"],
+      isFeatured: true
+    },
+    {
+      title: "Merayakan Takdir (Hera & Taufik)",
+      slug: "merayakan-takdir",
+      categoryName: "Web Design & Development",
+      shortDesc: "Undangan pernikahan digital interaktif dan estetis untuk Hera & Taufik.",
+      fullDesc: "<div class='space-y-6'><h2 class='text-2xl font-bold font-playfair'>A Digital Celebration</h2><p class='text-white/70'>Hera and Taufik wanted their wedding invitation to be more than just a piece of paper; they wanted a memorable digital experience that reflected their personalities and love story.</p><h2 class='text-2xl font-bold font-playfair pt-4'>Design & Development</h2><p class='text-white/70'>We crafted a bespoke, interactive digital invitation website. Featuring parallax scrolling, a curated color palette, and seamless RSVPs integration, the site was optimized for mobile devices to ensure all guests could easily access event details, location maps, and leave well-wishes.</p><h2 class='text-2xl font-bold font-playfair pt-4'>Guest Experience</h2><p class='text-white/70'>The couple received overwhelming praise from their guests for the aesthetic and smooth experience. The integrated RSVP system streamlined their guest management, making their special day significantly less stressful.</p></div>",
+      coverImage: "/src/assets/web-design-development/Testimoni Web Merayakan Takdir.png",
+      clientName: "Hera & Taufik",
+      duration: "3 Weeks",
+      projectUrl: "https://merayakantakdir.com",
+      techStack: ["React", "Tailwind CSS", "GSAP"],
       isFeatured: false
     },
     {
-      title: "Digital Experience",
-      slug: "digital-experience",
-      categoryName: "Web Design & Development",
-      shortDesc: "Ekosistem interface premium yang konsisten di seluruh customer journey.",
-      coverImage: "/src/assets/portfolio/creative.webp",
+      title: "TWS Product Ad",
+      slug: "tws-product-ad",
+      categoryName: "Digital Advertising",
+      shortDesc: "Desain iklan produk TWS menonjolkan fitur Bluetooth 5.2 dan Waterproof.",
+      fullDesc: "<div class='space-y-6'><h2 class='text-2xl font-bold font-playfair'>Product Spotlight</h2><p class='text-white/70'>Launching a new electronic product in a saturated market requires visuals that instantly communicate value and superiority. This TWS earbud needed to highlight its cutting-edge Bluetooth 5.2 tech and waterproof capabilities.</p><h2 class='text-2xl font-bold font-playfair pt-4'>Visual Execution</h2><p class='text-white/70'>We produced a series of high-impact digital ads. By utilizing dynamic lighting and macro shots of the product, paired with bold, easily digestible feature callouts, we created assets that are both visually stunning and highly informative.</p><h2 class='text-2xl font-bold font-playfair pt-4'>Performance</h2><p class='text-white/70'>These assets became the top-performing creatives in the client's advertising funnel, boasting a Click-Through Rate (CTR) 3x higher than their previous industry benchmarks.</p></div>",
+      coverImage: "/src/assets/creative-service/Creative Service-2.png",
+      clientName: "SonicTWS",
+      duration: "1 Week",
+      projectUrl: "https://sonic-tws.com/shop",
+      techStack: ["Figma", "After Effects", "Blender 3D"],
       isFeatured: false
     }
   ];
+
+  // Bersihkan data portfolio lama agar tidak double
+  await prisma.portfolio.deleteMany();
 
   for (const p of portfolios) {
     const existing = await prisma.portfolio.findUnique({ where: { slug: p.slug } });
@@ -177,9 +150,12 @@ async function main() {
           title: p.title,
           slug: p.slug,
           shortDesc: p.shortDesc,
-          fullDesc: `<p>${p.shortDesc} Details will be provided here.</p>`,
+          fullDesc: p.fullDesc,
           coverImage: p.coverImage,
-          techStack: ["React", "Node.js", "Tailwind CSS"],
+          clientName: p.clientName,
+          duration: p.duration,
+          projectUrl: p.projectUrl,
+          techStack: p.techStack,
           isFeatured: p.isFeatured,
           categoryId: pcMap[p.categoryName].id
         }

@@ -1,12 +1,25 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import axios from "axios";
+import { useLenis } from 'lenis/react';
 
 export default function ContactDrawer({ isOpen, onClose }) {
   const [formData, setFormData] = useState({ name: '', email: '', company: '', budget: '', message: '' });
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+  const lenis = useLenis();
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isOpen]);
 
   const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
@@ -67,7 +80,7 @@ export default function ContactDrawer({ isOpen, onClose }) {
               </button>
             </div>
 
-            <div className="flex-1 overflow-y-auto p-6">
+            <div className="flex-1 overflow-y-auto p-6 drawer-scrollbar" data-lenis-prevent="true">
               {success ? (
                 <div className="flex flex-col items-center justify-center h-full text-center">
                   <div className="w-16 h-16 bg-white text-[#00A8FF] rounded-full flex items-center justify-center mb-4">
@@ -146,10 +159,10 @@ export default function ContactDrawer({ isOpen, onClose }) {
                     style={{ backgroundColor: "rgba(255, 255, 255, 0.1)" }}
                   >
                     <option value="" className="bg-[#007BFF]">Select a range...</option>
-                    <option value="under_1k" className="bg-[#007BFF]">Under $1,000</option>
-                    <option value="1k_5k" className="bg-[#007BFF]">$1,000 - $5,000</option>
-                    <option value="5k_10k" className="bg-[#007BFF]">$5,000 - $10,000</option>
-                    <option value="over_10k" className="bg-[#007BFF]">$10,000+</option>
+                    <option value="< Rp 10.000.000" className="bg-[#007BFF]">&lt; Rp 10.000.000</option>
+                    <option value="Rp 10.000.000 - Rp 50.000.000" className="bg-[#007BFF]">Rp 10.000.000 - Rp 50.000.000</option>
+                    <option value="Rp 50.000.000 - Rp 150.000.000" className="bg-[#007BFF]">Rp 50.000.000 - Rp 150.000.000</option>
+                    <option value="> Rp 150.000.000" className="bg-[#007BFF]">&gt; Rp 150.000.000</option>
                   </select>
                 </div>
 

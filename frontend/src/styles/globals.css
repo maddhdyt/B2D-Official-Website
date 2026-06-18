@@ -89,6 +89,37 @@
   background: var(--primary);
 }
 
+/* Custom Scrollbar for Blue Drawer */
+.drawer-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+.drawer-scrollbar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+}
+.drawer-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+}
+.drawer-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* Global Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #050816;
+}
+::-webkit-scrollbar-thumb {
+  background: #1A2744;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #24A7FD;
+}
+
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
