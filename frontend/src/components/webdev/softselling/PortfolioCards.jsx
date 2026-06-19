@@ -4,11 +4,15 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import axios from "axios";
 
-import mockupWeb1 from "../../../assets/web-design-development/Testimoni Web Company Profile-1.png";
-import mockupWeb2 from "../../../assets/web-design-development/Testimoni Web Merayakan Takdir.png";
-import mockupWeb3 from "../../../assets/web-design-development/Testimoni Web-1.png";
-import mockupWeb4 from "../../../assets/web-design-development/Testimoni Web-2.png";
-import mockupWeb5 from "../../../assets/web-design-development/Testimoni Web E-absensi.png";
+const webImages = import.meta.glob('../../../assets/web-design-development/*.{png,jpg,jpeg,webp,svg}', { eager: true });
+const creativeImages = import.meta.glob('../../../assets/creative-service/*.{png,jpg,jpeg,webp,svg}', { eager: true });
+const adsImages = import.meta.glob('../../../assets/digital-advertising/*.{png,jpg,jpeg,webp,svg}', { eager: true });
+
+const mockupImages = [
+  ...Object.values(webImages).map(mod => mod.default),
+  ...Object.values(creativeImages).map(mod => mod.default),
+  ...Object.values(adsImages).map(mod => mod.default)
+];
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -20,7 +24,7 @@ const hardcodedProjects = [
     desc: "Rebranding digital lengkap untuk perusahaan distribusi yang ingin menjangkau pasar B2B lebih luas.",
     tags: ["Next.js", "TailwindCSS", "Framer Motion"],
     year: "2024",
-    image: mockupWeb1
+    image: mockupImages[0 % mockupImages.length]
   },
   {
     num: "02",
@@ -29,7 +33,7 @@ const hardcodedProjects = [
     desc: "Undangan digital personal dengan 847 tamu yang mengkonfirmasi kehadiran secara online.",
     tags: ["React", "Custom Animation", "RSVP Integration"],
     year: "2024",
-    image: mockupWeb2
+    image: mockupImages[1 % mockupImages.length]
   },
   {
     num: "03",
@@ -38,7 +42,7 @@ const hardcodedProjects = [
     desc: "Landing page kampanye yang menghasilkan 312 leads dalam 30 hari pertama.",
     tags: ["Next.js", "A/B Optimized", "Mobile-first"],
     year: "2025",
-    image: mockupWeb3
+    image: mockupImages[2 % mockupImages.length]
   },
   {
     num: "04",
@@ -47,7 +51,7 @@ const hardcodedProjects = [
     desc: "Sistem CRM custom untuk tim sales 15 orang — menggantikan 6 spreadsheet berbeda.",
     tags: ["Laravel", "React", "Pusher"],
     year: "2025",
-    image: mockupWeb4
+    image: mockupImages[3 % mockupImages.length]
   },
   {
     num: "05",
@@ -56,7 +60,7 @@ const hardcodedProjects = [
     desc: "Platform manajemen bisnis terintegrasi untuk operasional 3 cabang berskala nasional.",
     tags: ["Laravel", "React", "Queue"],
     year: "2025",
-    image: mockupWeb5
+    image: mockupImages[4 % mockupImages.length]
   }
 ];
 

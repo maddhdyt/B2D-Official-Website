@@ -5,20 +5,14 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Footer from '../components/Footer';
 import api from '../api/axios';
 
-import web1 from '../assets/web-design-development/Testimoni Web Company Profile-1.png';
-import web2 from '../assets/web-design-development/Testimoni Web Merayakan Takdir.png';
-import web3 from '../assets/web-design-development/Testimoni Web E-absensi.png';
-import creative1 from '../assets/creative-service/Creative Service-1.png';
-import creative2 from '../assets/creative-service/Creative Service-2.png';
-import creative3 from '../assets/creative-service/Creative Service-3.png';
-import ads1 from '../assets/digital-advertising/Testimoni Meta Ads-1.png';
-import ads2 from '../assets/digital-advertising/Testimoni Google Ads-1.png';
-import ads3 from '../assets/digital-advertising/Testimoni Meta Ads-2.png';
+const webImages = import.meta.glob('../assets/web-design-development/*.{png,jpg,jpeg,webp,svg}', { eager: true });
+const creativeImages = import.meta.glob('../assets/creative-service/*.{png,jpg,jpeg,webp,svg}', { eager: true });
+const adsImages = import.meta.glob('../assets/digital-advertising/*.{png,jpg,jpeg,webp,svg}', { eager: true });
 
 const mockupImages = [
-  web1, creative1, ads1,
-  web2, creative2, ads2,
-  web3, creative3, ads3
+  ...Object.values(webImages).map(mod => mod.default),
+  ...Object.values(creativeImages).map(mod => mod.default),
+  ...Object.values(adsImages).map(mod => mod.default)
 ];
 
 gsap.registerPlugin(ScrollTrigger);
@@ -51,11 +45,11 @@ export default function Portfolio() {
 
   // Generate 20 random floating cards based on the projects
   useEffect(() => {
-    if (portfolios.length === 0) return;
     const cards = [];
     for (let i = 0; i < 20; i++) {
-      const project = portfolios[i % portfolios.length] || {};
-      const image = mockupImages[i % mockupImages.length];
+      const project = portfolios.length > 0 ? portfolios[i % portfolios.length] : {};
+      const randomImageIndex = Math.floor(Math.random() * mockupImages.length);
+      const image = mockupImages[randomImageIndex];
       const isForeground = Math.random() > 0.5;
       cards.push({
         id: `float-${i}`,
@@ -221,9 +215,9 @@ export default function Portfolio() {
               >
                 <div ref={el => innerCardsRef.current[idx] = el} className="w-full h-full relative">
                   <div className="absolute inset-0 bg-[#00D4FF]/5 z-10 pointer-events-none" />
-                  <Link to={`/portfolio/${card.project.slug}`} className="block w-full h-full">
+                  <Link to={`/portfolio/${card.project.slug || ''}`} className="block w-full h-full">
                     <img 
-                      src={card.project.coverImage || card.image} 
+                      src={card.image} 
                       alt="" 
                       decoding="async"
                       className="w-full h-full object-cover opacity-60 hover:opacity-100 transition-opacity duration-500"
