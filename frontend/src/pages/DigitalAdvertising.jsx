@@ -178,10 +178,10 @@ const DigitalAdvertising = () => {
 
           {/* Right Text */}
           <div className="max-w-[280px] hidden md:block text-right">
-            <p className="font-sans text-xs text-white/80 leading-relaxed mb-4">
+            <p className="hero-desc font-sans text-xs text-white/80 leading-relaxed mb-4">
               Tired of investing your budget into clicks, traffic, or impressions—but still not seeing real revenue, momentum, or results?
             </p>
-            <p className="font-sans text-xs text-white/80 leading-relaxed">
+            <p className="hero-desc font-sans text-xs text-white/80 leading-relaxed">
               This system shows you how to build a proven ecosystem with scalable structure, conversion strategies that work, and marketing tactics designed to get you noticed.
             </p>
           </div>
