@@ -2,7 +2,7 @@ import axios from "axios";
 
 // Buat instance axios agar tidak perlu mengulang baseURL
 const api = axios.create({
-  baseURL: "http://localhost:5000/api/v1",
+  baseURL: import.meta.env.VITE_API_URL || "https://api.b2d.co.id/api/v1",
   headers: {
     "Content-Type": "application/json",
   },
