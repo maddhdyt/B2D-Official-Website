@@ -27,7 +27,7 @@ export default function ContactDrawer({ isOpen, onClose }) {
     e.preventDefault();
     setLoading(true);
     try {
-      await axios.post("http://localhost:5000/api/v1/leads", formData);
+      await axios.post("https://api.b2d.co.id/api/v1/leads", formData);
       setSuccess(true);
       setTimeout(() => {
         setSuccess(false);

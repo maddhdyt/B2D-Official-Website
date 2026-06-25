@@ -73,7 +73,7 @@ export default function PortfolioCards({ categoryFilter }) {
 
   useEffect(() => {
     // Fetch dynamic portfolio data from backend
-    axios.get("http://localhost:5000/api/v1/portfolios")
+    axios.get("https://api.b2d.co.id/api/v1/portfolios")
       .then(res => {
         if (res.data.success && res.data.data.length > 0) {
           let rawData = res.data.data;

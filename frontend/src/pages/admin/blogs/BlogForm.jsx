@@ -39,7 +39,7 @@ export default function BlogForm() {
           seoDesc: blog.seoDesc || ""
         });
         if (blog.featuredImage) {
-          setCoverPreview(blog.featuredImage.startsWith("http") ? blog.featuredImage : `http://localhost:5000${blog.featuredImage}`);
+          setCoverPreview(blog.featuredImage.startsWith("http") ? blog.featuredImage : `https://api.b2d.co.id${blog.featuredImage}`);
         }
       }).catch(console.error);
     }
