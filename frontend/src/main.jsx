@@ -21,10 +21,7 @@ const app = (
   </StrictMode>
 );
 
-if (rootElement.hasChildNodes()) {
-  hydrateRoot(rootElement, app);
-} else {
-  createRoot(rootElement).render(app);
-}
+const root = createRoot(rootElement);
+root.render(app);
 
 reportWebVitals();
